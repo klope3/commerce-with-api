@@ -1,4 +1,8 @@
 import React from "react";
+import { mainPageHookText } from "../../../constants";
+import Footer from "../../Common/Footer/Footer";
+import Header from "../../Common/Header/Header";
+import SearchBar from "../SearchBar/SearchBar";
 
 class MainPage extends React.Component {
     async componentDidMount() {
@@ -13,7 +17,15 @@ class MainPage extends React.Component {
     }
     render() {
         return (
-            <div></div>
+            <div>
+                <Header />
+                <h2>{mainPageHookText}</h2>
+                <div>
+                    <input type="text" name="searchInput" id="searchInput" />
+                    <button>Go</button>
+                </div>
+                <Footer />
+            </div>
         )
     }
 }

@@ -1,10 +1,10 @@
 import './App.css'
-import MainPage from './components/Browsing/MainPage/MainPage'
+import AppHub from './components/AppHub'
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      <AppHub />
     </div>
   )
 }

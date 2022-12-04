@@ -1,6 +1,6 @@
 import React from "react";
 
-class SortSettings extends React.Component {
+class PageControls extends React.Component {
     render() {
         return (
             <div></div>
@@ -8,4 +8,4 @@ class SortSettings extends React.Component {
     }
 }
 
-export default SortSettings;
+export default PageControls;

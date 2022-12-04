@@ -1,0 +1,8 @@
+.product-card {
+    width: 200px;
+    border: 1px solid lightgray;
+}
+
+.product-card img {
+    width: 200px;
+}
