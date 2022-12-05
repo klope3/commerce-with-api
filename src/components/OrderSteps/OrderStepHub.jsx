@@ -7,15 +7,57 @@ import OrderConfirmation from "./OrderConfirmation/OrderConfirmation";
 class OrderStepHub extends React.Component {
     constructor() {
         super();
-        this.state = { page: "confirm" };
+        this.state = { 
+            page: "cart",
+            shippingInfo: {},
+            paymentInfo: {},
+        };
     }
+
+    navigate = event => {
+        this.setState(prevState => ({
+            ...prevState,
+            page: event.target.name,
+        }));
+    }
+
+    handleFieldChange = event => {
+        const { name: sender, value } = event.target;
+        const infoObjKey = sender.startsWith("shipping") ? "shippingInfo" : "paymentInfo";
+        this.setState(prevState => ({
+            ...prevState,
+            [infoObjKey]: {
+                ...prevState[infoObjKey],
+                [sender]: value,
+            },
+        }));
+    }
+
     render() {
-        const { page } = this.state;
+        const { navigateFunction } = this.props;
+        const { 
+            page,
+            shippingInfo,
+            paymentInfo,
+        } = this.state;
         return (
             <div>
-                {page === "cart" && <Cart />}
-                {page === "shipping" && <ShippingInfo />}
-                {page === "payment" && <PaymentInfo />}
+                <button name="browsing" onClick={navigateFunction}>Back To Home</button>
+                {page === "cart" && <Cart navFunction={this.navigate} />}
+                {page === "shipping" && 
+                    <ShippingInfo 
+                        fieldValues={shippingInfo} 
+                        navFunction={this.navigate} 
+                        fieldChangeFunction={this.handleFieldChange} 
+                    />
+                }
+                {page === "payment" && 
+                    <PaymentInfo 
+                        fieldValues={paymentInfo} 
+                        navFunction={this.navigate} 
+                        fieldChangeFunction={this.handleFieldChange} 
+                    />
+                }
                 {page === "confirm" && <OrderConfirmation />}
             </div>
         )

@@ -2,7 +2,6 @@ import React from "react";
 import { mainPageHookText } from "../../../constants";
 import Footer from "../../Common/Footer/Footer";
 import Header from "../../Common/Header/Header";
-import SearchBar from "../SearchBar/SearchBar";
 
 class MainPage extends React.Component {
     async componentDidMount() {
@@ -16,13 +15,17 @@ class MainPage extends React.Component {
         // console.log(json);
     }
     render() {
+        const { 
+            navigateAppFunction,
+            navigateBrowsingFunction,
+        } = this.props;
         return (
             <div>
-                <Header />
+                <Header navigateAppFunction={navigateAppFunction} />
                 <h2>{mainPageHookText}</h2>
                 <div>
                     <input type="text" name="searchInput" id="searchInput" />
-                    <button>Go</button>
+                    <button name="browsing" onClick={navigateBrowsingFunction}>Go</button>
                 </div>
                 <Footer />
             </div>
