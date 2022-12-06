@@ -1,7 +1,42 @@
+import { creditCardTypes } from "./constants";
+import { formattingFunctions } from "./formatters";
+import { validationFunctions } from "./validation";
+
+export const getCardType = numberString => {
+    for (const cardType of creditCardTypes) {
+        if (numberString.startsWith(cardType.start)) return cardType.type;
+    }
+    return undefined;
+}
+
+export const numberArray = (first, last) => {
+    const array = [];
+    for (let i = first; i <= last; i++) {
+        array.push(i);
+    }
+    return array;
+}
+
+export const fileSizeToString = kilobytes => `${kilobytes <= 999 ? kilobytes + " KB" : (kilobytes / 100).toFixed(2) + " MB"}`;
+
+export const formatCamelCase = str => str.replace(/([A-Z])/, " $1");
+
 export const changeComponentField = (component, event) => {
+    const { name: sender, value } = event.target;
+    const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
+    component.setState(prevState => ({
+        ...prevState,
+        [sender]: valToSet,
+    }));
+}
+
+export const blurComponentField = (component, event) => {
     const { name: sender, value } = event.target;
     component.setState(prevState => ({
         ...prevState,
-        [sender]: value,
+        errors: {
+            ...prevState.errors,
+            [sender]: validationFunctions[sender] ? validationFunctions[sender](value) : undefined,
+        },
     }));
 }

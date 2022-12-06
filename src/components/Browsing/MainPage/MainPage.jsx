@@ -18,10 +18,12 @@ class MainPage extends React.Component {
         const { 
             navigateAppFunction,
             navigateBrowsingFunction,
+            signOutFunction,
+            appStateInfo,
         } = this.props;
         return (
             <div>
-                <Header navigateAppFunction={navigateAppFunction} />
+                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} />
                 <h2>{mainPageHookText}</h2>
                 <div>
                     <input type="text" name="searchInput" id="searchInput" />

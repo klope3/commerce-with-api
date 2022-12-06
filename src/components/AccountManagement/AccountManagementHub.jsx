@@ -25,7 +25,7 @@ class AccountManagementHub extends React.Component {
     }
 
     render() {
-        const { navigateFunction } = this.props;
+        const { navigateFunction, createAccountFunction, signInFunction } = this.props;
         const { page } = this.state;
         return (
             <div>
@@ -34,8 +34,8 @@ class AccountManagementHub extends React.Component {
                     {this.radioOption("Sign In", "signIn", page === "signIn")}
                     {this.radioOption("Create Account", "createAccount", page === "createAccount")}
                 </div>
-                {page === "signIn" && <SignIn />}
-                {page === "createAccount" && <CreateAccount />}
+                {page === "signIn" && <SignIn signInFunction={signInFunction} />}
+                {page === "createAccount" && <CreateAccount createAccountFunction={createAccountFunction} />}
             </div>
         )
     }

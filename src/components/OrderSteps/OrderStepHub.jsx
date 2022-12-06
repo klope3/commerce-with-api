@@ -3,6 +3,7 @@ import Cart from "./Cart/Cart";
 import ShippingInfo from "./ShippingInfo/ShippingInfo";
 import PaymentInfo from "./PaymentInfo/PaymentInfo";
 import OrderConfirmation from "./OrderConfirmation/OrderConfirmation";
+import { formattingFunctions } from "../../formatters";
 
 class OrderStepHub extends React.Component {
     constructor() {
@@ -24,11 +25,12 @@ class OrderStepHub extends React.Component {
     handleFieldChange = event => {
         const { name: sender, value } = event.target;
         const infoObjKey = sender.startsWith("shipping") ? "shippingInfo" : "paymentInfo";
+        const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
         this.setState(prevState => ({
             ...prevState,
             [infoObjKey]: {
                 ...prevState[infoObjKey],
-                [sender]: value,
+                [sender]: valToSet,
             },
         }));
     }

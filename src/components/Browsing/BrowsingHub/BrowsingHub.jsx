@@ -19,12 +19,30 @@ class BrowsingHub extends React.Component {
     }
     
     render() {
-        const { navigateFunction } = this.props;
+        const { 
+            navigateFunction,
+            appStateInfo,
+            signOutFunction,
+        } = this.props;
         const { page } = this.state;
         return (
             <>
-                {page === "main" && <MainPage navigateAppFunction={navigateFunction} navigateBrowsingFunction={this.navigateBrowsing} />}
-                {page === "browsing" && <BrowsingPage navigateAppFunction={navigateFunction} navigateBrowsingFunction={this.navigateBrowsing} />}
+                {page === "main" && 
+                    <MainPage 
+                        appStateInfo={appStateInfo} 
+                        signOutFunction={signOutFunction}
+                        navigateAppFunction={navigateFunction} 
+                        navigateBrowsingFunction={this.navigateBrowsing} 
+                    />
+                }
+                {page === "browsing" && 
+                    <BrowsingPage 
+                        appStateInfo={appStateInfo} 
+                        signOutFunction={signOutFunction}
+                        navigateAppFunction={navigateFunction} 
+                        navigateBrowsingFunction={this.navigateBrowsing} 
+                    />
+                }
             </>
         )
     }

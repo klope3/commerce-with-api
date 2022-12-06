@@ -8,7 +8,14 @@ class AppHub extends React.Component {
         super();
         this.state = { 
             page: "browsing",
-            accounts: [],
+            createdAccounts: [
+                {
+                    email: "person@example.com",
+                    password: "password1",
+                    firstName: "John",
+                    lastName: "Doe",
+                },
+            ],
             activeAccountIndex: undefined,
             cart: [],
         };
@@ -21,13 +28,78 @@ class AppHub extends React.Component {
         }));
     }
 
+    tryCreateAccount = (email, password, firstName, lastName) => {
+        const duplicate = this.state.createdAccounts.filter(item => item.email === email).length > 0;
+        if (duplicate) return false;
+
+        this.setState(prevState => ({
+            ...prevState,
+            createdAccounts: [
+                ...prevState.createdAccounts,
+                {
+                    email: email,
+                    password: password,
+                    firstName: firstName,
+                    lastName: lastName,
+                },
+            ],
+        }));
+        return true;
+    }
+
+    trySignIn = (email, password, failureCallback) => {
+        const matchingIndex = this.state.createdAccounts.findIndex(item => item.email === email && item.password === password);
+        if (matchingIndex === -1) {
+            failureCallback();
+            return;
+        }
+        this.setState(prevState => ({
+            ...prevState,
+            activeAccountIndex: matchingIndex,
+            page: "browsing",
+        }));
+    }
+
+    signOut = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            activeAccountIndex: undefined,
+        }))
+    }
+
     render() {
-        const { page } = this.state;
+        const { 
+            page, 
+            createdAccounts, 
+            activeAccountIndex, 
+            cart,
+        } = this.state;
+        const appStateInfo = { 
+            activeAccount: activeAccountIndex !== undefined ? createdAccounts[activeAccountIndex] : undefined,
+            cart,
+        };
         return (
             <div>
-                {page === "account" && <AccountManagementHub navigateFunction={this.navigateApp} />}
-                {page === "browsing" && <BrowsingHub navigateFunction={this.navigateApp} />}
-                {page === "order" && <OrderStepHub navigateFunction={this.navigateApp} />}
+                {page === "account" && 
+                    <AccountManagementHub 
+                        navigateFunction={this.navigateApp} 
+                        createAccountFunction={this.tryCreateAccount}
+                        signInFunction={this.trySignIn} 
+                    />
+                }
+                {page === "browsing" && 
+                    <BrowsingHub 
+                        appStateInfo={appStateInfo}
+                        signOutFunction={this.signOut} 
+                        navigateFunction={this.navigateApp} 
+                    />
+                }
+                {page === "order" && 
+                    <OrderStepHub 
+                        appStateInfo={appStateInfo} 
+                        navigateFunction={this.navigateApp} 
+                    />
+                }
             </div>
         )
     }

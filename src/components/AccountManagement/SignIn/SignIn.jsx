@@ -4,17 +4,28 @@ import { changeComponentField } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 
 class SignIn extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {};
+        this.signInFunction = props.signInFunction;
     }
 
     changeField = event => changeComponentField(this, event);
+
+    clickSignIn = () => this.signInFunction(this.state.signInEmail, this.state.signInPassword, this.signInFailure);
+
+    signInFailure = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            failedAttempt: true,
+        }));
+    }
 
     render() {
         const {
             signInEmail,
             signInPassword,
+            failedAttempt,
         } = this.state;
         const fields = [
             {
@@ -31,7 +42,8 @@ class SignIn extends React.Component {
         return (
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} changeFunction={this.changeField} />)}
-                <button>Sign In</button>
+                {failedAttempt && <div className="error-text">Invalid username or password.</div>}
+                <button onClick={this.clickSignIn}>Sign In</button>
             </div>
         )
     }

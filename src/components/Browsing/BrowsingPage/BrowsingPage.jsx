@@ -9,10 +9,15 @@ import SearchBar from "../SearchBar/SearchBar";
 
 class BrowsingPage extends React.Component {
     render() {
-        const { navigateAppFunction, navigateBrowsingFunction } = this.props;
+        const { 
+            navigateAppFunction, 
+            navigateBrowsingFunction,
+            signOutFunction,
+            appStateInfo,
+        } = this.props;
         return (
             <>
-                <Header navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
+                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <SearchBar />
                 <div className="filter-list-container">
                     <FilterBar />
