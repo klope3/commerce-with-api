@@ -262,3 +262,5 @@ export const countries = [
     "Zambia",
     "Zimbabwe",
 ];
+
+export const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;

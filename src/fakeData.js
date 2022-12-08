@@ -3,7 +3,7 @@ import img1 from "../src/assets/images/placeholder/1.jpg";
 import img2 from "../src/assets/images/placeholder/2.jpg";
 import img3 from "../src/assets/images/placeholder/3.jpg";
 
-export const fakeProducts = [
+export const fakeData = [
     {
         name: "Product 1",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor qui incidunt praesentium quia architecto quaerat ab unde quasi sapiente impedit quibusdam quos sequi sunt, eaque nemo vel voluptatibus? Est, reiciendis.",

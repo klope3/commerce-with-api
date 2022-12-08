@@ -1,7 +1,11 @@
 import React from "react";
+import { PUBLIC_KEY } from "../constants";
+import { fakeData } from "../fakeData";
 import AccountManagementHub from "./AccountManagement/AccountManagementHub";
 import BrowsingHub from "./Browsing/BrowsingHub/BrowsingHub";
 import OrderStepHub from "./OrderSteps/OrderStepHub";
+
+const useFakeData = false; //for development and testing only
 
 class AppHub extends React.Component {
     constructor() {
@@ -18,6 +22,8 @@ class AppHub extends React.Component {
             ],
             activeAccountIndex: undefined,
             cart: [],
+            loading: false,
+            errorMessage: undefined,
         };
     };
 
@@ -67,16 +73,60 @@ class AppHub extends React.Component {
         }))
     }
 
+    async componentDidMount() {
+        if (useFakeData) {
+            this.setState(prevState => ({...prevState, products: fakeData}));
+            return;
+        }
+        this.setState(prevState => ({...prevState, loading: true}));
+        try {
+            const response = await fetch("https://api.chec.io/v1/products?include=attributes&limit=100", {
+                method: "get",
+                headers: new Headers({
+                    "X-Authorization": PUBLIC_KEY
+                }),
+            });
+            if (response.ok) {
+                const json = await response.json();
+                this.setState(prevState => ({
+                    ...prevState, 
+                    loading: false,
+                    products: json.data,
+                }));
+            } else {
+                this.setState(prevState => ({
+                    ...prevState,
+                    errorMessage: `A ${response.status} error occurred.`,
+                    loading: false,
+                }));
+            }
+        } catch(error) {
+            this.setState(prevState => ({
+                ...prevState,
+                errorMessage: "An error occurred. There might be a network issue.",
+                loading: false,
+            }));
+        }
+        // const json = await response.json();
+        // this.setState(prevState => ({...prevState, loading: false}));
+    }
+
     render() {
         const { 
             page, 
             createdAccounts, 
             activeAccountIndex, 
             cart,
+            loading,
+            errorMessage,
+            products,
         } = this.state;
         const appStateInfo = { 
             activeAccount: activeAccountIndex !== undefined ? createdAccounts[activeAccountIndex] : undefined,
             cart,
+            loading,
+            errorMessage,
+            products,
         };
         return (
             <div>
@@ -100,6 +150,8 @@ class AppHub extends React.Component {
                         navigateFunction={this.navigateApp} 
                     />
                 }
+                {/* {loading && <div>Loading...</div>}
+                {errorMessage && <div className="error-text">{errorMessage}</div>} */}
             </div>
         )
     }

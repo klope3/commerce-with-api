@@ -7,16 +7,16 @@ class ProductCard extends React.Component {
             product: { 
                 name, 
                 description, 
-                price, 
-                image 
+                price: { formatted_with_symbol: price },
+                image: { url: imgUrl },
             } 
         } = this.props;
         return (
             <div className="product-card">
-                <div><img src={image}></img></div>
+                <div><img src={imgUrl}></img></div>
                 <div>{name}</div>
-                <div>{description}</div>
-                <div>{`$${price}`}</div>
+                <div>{description.replace(/(<p>|<\/p>)/g, "")}</div>
+                <div>{price}</div>
             </div>
         )
     }
