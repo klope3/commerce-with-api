@@ -3,10 +3,10 @@ import "./CheckBox.css";
 
 class CheckBox extends React.Component {
     render() {
-        const { label, id } = this.props;
+        const { label, id, changeFunction } = this.props;
         return (
             <label className="checkbox-label" htmlFor={id}>
-                <input type="checkbox" name={id} id={id} />
+                <input type="checkbox" name={id} id={id} onChange={changeFunction} />
                 {label}
             </label>
         )

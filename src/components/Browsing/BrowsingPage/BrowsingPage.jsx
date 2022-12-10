@@ -6,20 +6,28 @@ import Header from "../../Common/Header/Header";
 import ProductList from "../ProductList/ProductList";
 import SearchBar from "../SearchBar/SearchBar";
 import { sortingFunctions } from "../../../productSorting";
+import { productFilters } from "../../../productFilters";
 
 class BrowsingPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            sortingFunction: sortingFunctions.alphaAscending,
+            sortingFunction: sortingFunctions[0].function,
+            filterFunctions: [
+                productFilters[0].function,
+            ],
         }
     }
 
     changeSortingFunction = event => {
         this.setState(prevState => ({
             ...prevState,
-            sortingFunction: sortingFunctions[event.target.value],
+            sortingFunction: sortingFunctions.find(item => item.name === event.target.value).function,
         }));
+    }
+
+    changeFilterFunction = event => {
+        console.log("change " + event.target.name + " to " + event.target.value);
     }
 
     render() {
@@ -34,14 +42,14 @@ class BrowsingPage extends React.Component {
                 errorMessage,
             }
         } = this.props;
-        const { sortingFunction } = this.state;
+        const { sortingFunction, filterFunctions } = this.state;
         return (
             <>
                 <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <SearchBar changeSortingFunction={this.changeSortingFunction} />
                 <div className="filter-list-container">
-                    <FilterBar />
-                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} />
+                    <FilterBar changeFilterFunction={this.changeFilterFunction} />
+                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filterFunctions={filterFunctions} />
                 </div>
                 <Footer />
             </>

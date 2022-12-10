@@ -9,7 +9,9 @@ class ProductList extends React.Component {
             loading,
             errorMessage,
             sortingFunction,
+            filterFunctions,
         } = this.props;
+        const filteredProducts = products ? filterFunctions[0](products) : undefined;
         const sortedProducts = products ? sortingFunction(products) : undefined;
         return (
             <div className="product-list">
