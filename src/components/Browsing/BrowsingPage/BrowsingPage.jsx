@@ -6,16 +6,13 @@ import Header from "../../Common/Header/Header";
 import ProductList from "../ProductList/ProductList";
 import SearchBar from "../SearchBar/SearchBar";
 import { sortingFunctions } from "../../../productSorting";
-import { productFilters } from "../../../productFilters";
 
 class BrowsingPage extends React.Component {
     constructor() {
         super();
         this.state = {
             sortingFunction: sortingFunctions[0].function,
-            filterFunctions: [
-                productFilters[0].function,
-            ],
+            filters: {},
         }
     }
 
@@ -26,8 +23,19 @@ class BrowsingPage extends React.Component {
         }));
     }
 
-    changeFilterFunction = event => {
-        console.log("change " + event.target.name + " to " + event.target.value);
+    changeFilter = event => {
+        const { name: sender, value, type, checked, dataset: { tag } } = event.target;
+        const valToSet = type === "checkbox" ? checked : value;
+        this.setState(prevState => ({
+            ...prevState,
+            filters: {
+                ...prevState.filters,
+                [tag]: {
+                    ...prevState.filters[tag],
+                    [sender]: prevState[sender] === true ? false : valToSet,
+                },
+            },
+        }));
     }
 
     render() {
@@ -40,16 +48,17 @@ class BrowsingPage extends React.Component {
                 products,
                 loading,
                 errorMessage,
+                productAttributes,
             }
         } = this.props;
-        const { sortingFunction, filterFunctions } = this.state;
+        const { sortingFunction, filters } = this.state;
         return (
             <>
                 <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <SearchBar changeSortingFunction={this.changeSortingFunction} />
                 <div className="filter-list-container">
-                    <FilterBar changeFilterFunction={this.changeFilterFunction} />
-                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filterFunctions={filterFunctions} />
+                    <FilterBar productAttributes={productAttributes} changeFilterFunction={this.changeFilter} />
+                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} />
                 </div>
                 <Footer />
             </>
