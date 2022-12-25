@@ -5,6 +5,7 @@ import visaIcon from "../src/assets/images/creditcards/visa.png";
 
 export const brandName = "Vee3D";
 export const mainPageHookText = "Find premium PBR assets for your project.";
+export const mainPageGoButtonText = "Our Products";
 
 export const fieldNames = {
     signInEmail: "signInEmail",

@@ -50,6 +50,7 @@ class ProductList extends React.Component {
             "Game Ready": product => this.getProductAttribute(product, "Game Ready").value,
             "Animation Ready": product => this.getProductAttribute(product, "Animation Ready").value,
             "price": product => this.isInNumberRange(product.price.raw, filterInputs["price"]),
+            "category": product => product.categories.length && filterInputs["category"][product.categories[0].name] === true,
         }
 
         for (const key in filterInputs) {
@@ -67,8 +68,11 @@ class ProductList extends React.Component {
             errorMessage,
             sortingFunction,
             filters,
+            searchString,
         } = this.props;
-        const filteredProducts = products && filters ? this.filterProducts(products, filters) : undefined;
+        const searchRegex = new RegExp(`${searchString}`, "i");
+        const searchedProducts = products ? products.filter(product => !searchString || !searchString.length || product.name.match(searchRegex) || product.description.match(searchRegex)) : undefined;
+        const filteredProducts = searchedProducts && filters ? this.filterProducts(searchedProducts, filters, searchString) : undefined;
         const sortedProducts = filteredProducts ? sortingFunction(filteredProducts) : undefined;
         return (
             <div className="product-list">

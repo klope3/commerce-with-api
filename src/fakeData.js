@@ -14,6 +14,11 @@ export const fakeData = [
         image: {
             url: img1,
         },
+        categories: [
+            {
+                name: "Category 1",
+            },
+        ],
     },
     {
         name: "Thing 2",
@@ -25,6 +30,11 @@ export const fakeData = [
         image: {
             url: img2,
         },
+        categories: [
+            {
+                name: "Category 1",
+            },
+        ],
     },
     {
         name: "Item 3",
@@ -36,6 +46,11 @@ export const fakeData = [
         image: {
             url: img3,
         },
+        categories: [
+            {
+                name: "Category 2",
+            },
+        ],
     },
     {
         name: "Collectible 4",
@@ -47,6 +62,11 @@ export const fakeData = [
         image: {
             url: img2,
         },
+        categories: [
+            {
+                name: "Category 4",
+            },
+        ],
     },
     {
         name: "Figurine 5",
@@ -58,6 +78,11 @@ export const fakeData = [
         image: {
             url: img1,
         },
+        categories: [
+            {
+                name: "Category 4",
+            },
+        ],
     },
 ];
 
@@ -123,6 +148,31 @@ export const fakeAttributes = {
         {
             name: "Polygon Count",
             type: "number",
+        },
+    ]
+}
+
+export const fakeCategories = {
+    data: [
+        {
+            name: "Category 1",
+            description: "Things belonging to category 1.",
+        },
+        {
+            name: "Category 2",
+            description: "Things belonging to category 2.",
+        },
+        {
+            name: "Category 3",
+            description: "Things belonging to category 3.",
+        },
+        {
+            name: "Category 4",
+            description: "Things belonging to category 4.",
+        },
+        {
+            name: "Category 5",
+            description: "Things belonging to category 5.",
         },
     ]
 }

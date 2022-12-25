@@ -1,6 +1,6 @@
 import React from "react";
 import { PUBLIC_KEY, SECRET_KEY } from "../constants";
-import { fakeAttributes, fakeData } from "../fakeData";
+import { fakeAttributes, fakeCategories, fakeData } from "../fakeData";
 import AccountManagementHub from "./AccountManagement/AccountManagementHub";
 import BrowsingHub from "./Browsing/BrowsingHub/BrowsingHub";
 import OrderStepHub from "./OrderSteps/OrderStepHub";
@@ -25,6 +25,7 @@ class AppHub extends React.Component {
             loading: false,
             errorMessage: undefined,
             productAttributes: [],
+            productCategories: [],
         };
     };
 
@@ -105,6 +106,29 @@ class AppHub extends React.Component {
         }
     }
 
+    tryFetchCategories = async() => {
+        try {
+            const response = await fetch("https://api.chec.io/v1/categories", {
+            method: "get",
+            headers: new Headers({
+                "X-Authorization": SECRET_KEY
+            }),
+        });
+        if (response.ok) {
+            const json = await response.json();
+            this.setState(prevState => ({
+                ...prevState,
+                productCategories: json,
+            }));
+        }
+        else {
+            console.log(response);
+        }
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
     tryFetchAttributes = async() => {
         try {
             const response = await fetch("https://api.chec.io/v1/attributes", {
@@ -134,12 +158,14 @@ class AppHub extends React.Component {
                 ...prevState, 
                 products: fakeData,
                 productAttributes: fakeAttributes,
+                productCategories: fakeCategories,
             }));
             return;
         }
         this.setState(prevState => ({...prevState, loading: true}));
         this.tryFetchProducts();
         this.tryFetchAttributes();
+        this.tryFetchCategories();
     }
 
     render() {
@@ -152,6 +178,7 @@ class AppHub extends React.Component {
             errorMessage,
             products,
             productAttributes,
+            productCategories,
         } = this.state;
         const appStateInfo = { 
             activeAccount: activeAccountIndex !== undefined ? createdAccounts[activeAccountIndex] : undefined,
@@ -160,6 +187,7 @@ class AppHub extends React.Component {
             errorMessage,
             products,
             productAttributes,
+            productCategories,
         };
         return (
             <div>

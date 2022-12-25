@@ -55,11 +55,12 @@ class FilterBar extends React.Component {
     }
 
     render() {
-        const { productAttributes, changeFilterFunction } = this.props;
+        const { productAttributes, productCategories, changeFilterFunction } = this.props;
         return (
             <div>
-                {productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
+                {productAttributes.data && productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
                 <NumberRangeGroup headingText="Price" dataTag="price" changeFunction={changeFilterFunction} />
+                {productCategories.data && <MultiSelectGroup headingText="Category" dataTag="category" options={productCategories.data.map(item => item.name)} changeFunction={changeFilterFunction} />}
                 <button>Apply</button>
             </div>
         )
