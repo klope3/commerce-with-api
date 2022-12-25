@@ -23,6 +23,7 @@ class BrowsingHub extends React.Component {
             navigateFunction,
             appStateInfo,
             signOutFunction,
+            changeItemQuantityFunction,
         } = this.props;
         const { page } = this.state;
         return (
@@ -41,6 +42,7 @@ class BrowsingHub extends React.Component {
                         signOutFunction={signOutFunction}
                         navigateAppFunction={navigateFunction} 
                         navigateBrowsingFunction={this.navigateBrowsing} 
+                        changeItemQuantityFunction={changeItemQuantityFunction}
                     />
                 }
             </>

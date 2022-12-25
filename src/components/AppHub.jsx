@@ -21,7 +21,7 @@ class AppHub extends React.Component {
                 },
             ],
             activeAccountIndex: undefined,
-            cart: [],
+            cart: {},
             loading: false,
             errorMessage: undefined,
             productAttributes: [],
@@ -152,6 +152,24 @@ class AppHub extends React.Component {
         }
     }
 
+    changeCartItemQuantity = event => {
+        const {
+            dataset: { productName },
+            name: sender,
+            value,
+        } = event.target;
+        let valToSet = value;
+        if (sender === "addToCartButton") valToSet = 1;
+        if (sender === "removeFromCartButton") valToSet = 0;
+        this.setState(prevState => ({
+            ...prevState,
+            cart: {
+                ...prevState.cart,
+                [productName]: valToSet,
+            },
+        }));
+    }
+
     async componentDidMount() {
         if (useFakeData) {
             this.setState(prevState => ({
@@ -202,13 +220,15 @@ class AppHub extends React.Component {
                     <BrowsingHub 
                         appStateInfo={appStateInfo}
                         signOutFunction={this.signOut} 
-                        navigateFunction={this.navigateApp} 
+                        navigateFunction={this.navigateApp}
+                        changeItemQuantityFunction={this.changeCartItemQuantity} 
                     />
                 }
                 {page === "order" && 
                     <OrderStepHub 
                         appStateInfo={appStateInfo} 
-                        navigateFunction={this.navigateApp} 
+                        navigateFunction={this.navigateApp}
+                        changeItemQuantityFunction={this.changeCartItemQuantity} 
                     />
                 }
                 {/* {loading && <div>Loading...</div>}

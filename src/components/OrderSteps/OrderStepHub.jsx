@@ -36,7 +36,11 @@ class OrderStepHub extends React.Component {
     }
 
     render() {
-        const { navigateFunction } = this.props;
+        const { 
+            navigateFunction, 
+            changeItemQuantityFunction,
+            appStateInfo,
+        } = this.props;
         const { 
             page,
             shippingInfo,
@@ -45,7 +49,7 @@ class OrderStepHub extends React.Component {
         return (
             <div>
                 <button name="browsing" onClick={navigateFunction}>Back To Home</button>
-                {page === "cart" && <Cart navFunction={this.navigate} />}
+                {page === "cart" && <Cart appStateInfo={appStateInfo} navFunction={this.navigate} changeItemQuantityFunction={changeItemQuantityFunction} />}
                 {page === "shipping" && 
                     <ShippingInfo 
                         fieldValues={shippingInfo} 

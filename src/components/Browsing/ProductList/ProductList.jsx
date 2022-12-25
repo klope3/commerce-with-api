@@ -69,6 +69,8 @@ class ProductList extends React.Component {
             sortingFunction,
             filters,
             searchString,
+            changeItemQuantityFunction,
+            appStateInfo: { cart },
         } = this.props;
         const searchRegex = new RegExp(`${searchString}`, "i");
         const searchedProducts = products ? products.filter(product => !searchString || !searchString.length || product.name.match(searchRegex) || product.description.match(searchRegex)) : undefined;
@@ -79,7 +81,16 @@ class ProductList extends React.Component {
                 {errorMessage && <div className="error-text">{errorMessage}</div>}
                 {loading && <div>Loading...</div>}
                 {!errorMessage && !loading && <div>Found {sortedProducts.length} results.</div>}
-                {!errorMessage && !loading && sortedProducts.map(item => <ProductCard key={item.name} product={item}/>)}
+                {!errorMessage && !loading && sortedProducts
+                    .map(product => {
+                        return <ProductCard 
+                            key={product.name} 
+                            product={product} 
+                            quantityInCart={cart[product.name] ? cart[product.name] : 0}
+                            changeItemQuantityFunction={changeItemQuantityFunction}/>
+                        }
+                    )
+                }
             </div>
         )
     }

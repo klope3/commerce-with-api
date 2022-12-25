@@ -51,6 +51,7 @@ class BrowsingPage extends React.Component {
             navigateAppFunction, 
             navigateBrowsingFunction,
             signOutFunction,
+            changeItemQuantityFunction,
             appStateInfo,
             appStateInfo: {
                 products,
@@ -67,7 +68,7 @@ class BrowsingPage extends React.Component {
                 <SearchBar changeSortingFunction={this.changeSortingFunction} changeSearchFunction={this.changeSearchString} />
                 <div className="filter-list-container">
                     <FilterBar productAttributes={productAttributes} productCategories={productCategories} changeFilterFunction={this.changeFilter} />
-                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} searchString={searchString} />
+                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} searchString={searchString} changeItemQuantityFunction={changeItemQuantityFunction} appStateInfo={appStateInfo} />
                 </div>
                 <Footer />
             </>
