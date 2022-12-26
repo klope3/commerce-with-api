@@ -1,8 +1,39 @@
 .product-card {
     width: 200px;
+    height: 150px;
     border: 1px solid lightgray;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    color: white;
+    position: relative;
 }
 
-.product-card img {
-    width: 200px;
+.product-card-overlay,
+.product-card-input-container {
+    opacity: 0%;
+}
+
+.product-card-input-container {
+    position: absolute;
+    bottom: 0;
+}
+
+.product-card-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
+
+.product-card-overlay div {
+    pointer-events: none;
+}
+
+.product-card button,
+.product-card input {
+    pointer-events: initial;
+}
+
+.product-card:hover .product-card-overlay,
+.product-card:hover .product-card-input-container {
+    opacity: 100%;
 }

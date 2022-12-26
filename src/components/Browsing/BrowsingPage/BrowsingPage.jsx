@@ -6,6 +6,7 @@ import Header from "../../Common/Header/Header";
 import ProductList from "../ProductList/ProductList";
 import SearchBar from "../SearchBar/SearchBar";
 import { sortingFunctions } from "../../../productSorting";
+import ProductModal from "../ProductModal/ProductModal";
 
 class BrowsingPage extends React.Component {
     constructor() {
@@ -14,7 +15,15 @@ class BrowsingPage extends React.Component {
             sortingFunction: sortingFunctions[0].function,
             filters: {},
             searchString: "",
+            focusedProduct: undefined,
         }
+    }
+
+    setProductFocus = event => {
+        this.setState(prevState => ({
+            ...prevState,
+            focusedProduct: event.target.dataset.productFocusName,
+        }));
     }
 
     changeSearchString = event => {
@@ -54,6 +63,7 @@ class BrowsingPage extends React.Component {
             changeItemQuantityFunction,
             appStateInfo,
             appStateInfo: {
+                cart,
                 products,
                 loading,
                 errorMessage,
@@ -61,16 +71,23 @@ class BrowsingPage extends React.Component {
                 productCategories,
             }
         } = this.props;
-        const { sortingFunction, filters, searchString } = this.state;
+        const { 
+            sortingFunction, 
+            filters, 
+            searchString,
+            focusedProduct,
+        } = this.state;
+        const focusedProductObj = products.find(product => product.name === focusedProduct);
         return (
             <>
                 <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <SearchBar changeSortingFunction={this.changeSortingFunction} changeSearchFunction={this.changeSearchString} />
                 <div className="filter-list-container">
                     <FilterBar productAttributes={productAttributes} productCategories={productCategories} changeFilterFunction={this.changeFilter} />
-                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} searchString={searchString} changeItemQuantityFunction={changeItemQuantityFunction} appStateInfo={appStateInfo} />
+                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} searchString={searchString} changeItemQuantityFunction={changeItemQuantityFunction} focusProductFunction={this.setProductFocus} appStateInfo={appStateInfo} />
                 </div>
                 <Footer />
+                {focusedProduct && <ProductModal product={focusedProductObj} focusProductFunction={this.setProductFocus} quantityInCart={cart[focusedProductObj.name] ? cart[focusedProductObj.name] : 0} changeItemQuantityFunction={changeItemQuantityFunction} />}
             </>
         )
     }

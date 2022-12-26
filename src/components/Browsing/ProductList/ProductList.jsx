@@ -70,6 +70,7 @@ class ProductList extends React.Component {
             filters,
             searchString,
             changeItemQuantityFunction,
+            focusProductFunction,
             appStateInfo: { cart },
         } = this.props;
         const searchRegex = new RegExp(`${searchString}`, "i");
@@ -87,7 +88,8 @@ class ProductList extends React.Component {
                             key={product.name} 
                             product={product} 
                             quantityInCart={cart[product.name] ? cart[product.name] : 0}
-                            changeItemQuantityFunction={changeItemQuantityFunction}/>
+                            changeItemQuantityFunction={changeItemQuantityFunction}
+                            focusProductFunction={focusProductFunction}/>
                         }
                     )
                 }
