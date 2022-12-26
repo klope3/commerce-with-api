@@ -1,8 +1,9 @@
 import React from "react";
 import { fieldNames } from "../../../constants";
 import { blurComponentField } from "../../../utility";
-import { validationFunctions } from "../../../validation";
 import InputField from "../../Common/InputField/InputField";
+import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
+import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
 
 class ShippingInfo extends React.Component {
     constructor() {
@@ -24,6 +25,12 @@ class ShippingInfo extends React.Component {
                 shippingCountry,
                 shippingState,
                 shippingZip,
+                shippingMethod,
+            },
+            appStateInfo,
+            appStateInfo: {
+                cart,
+                products,
             },
             navFunction,
             fieldChangeFunction,
@@ -83,9 +90,31 @@ class ShippingInfo extends React.Component {
                 errorText: zipError,
             },
         ];
+        const radios = [
+            {
+                id: "standard",
+                checked: shippingMethod === "standard",
+                text: "Standard"
+            },
+            {
+                id: "express",
+                checked: shippingMethod === "express",
+                text: "Express"
+            },
+        ]
         return (
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
+                <div>
+                    {radios.map(radio => (
+                        <label key={radio.id} htmlFor={radio.id}>
+                            <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
+                            {radio.text}
+                        </label>
+                    ))}
+                </div>
+                <ProductReviewArea appStateInfo={appStateInfo} />
+                <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="cart" onClick={navFunction}>Back To Cart</button>
                 <button name="payment" onClick={navFunction}>Go To Payment</button>
             </div>

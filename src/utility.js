@@ -40,3 +40,9 @@ export const blurComponentField = (component, event) => {
         },
     }));
 }
+
+export const calculateCartTotal = (cart, products) => {
+    return Object.keys(cart).reduce((accum, cartKey) => {
+        return accum + products.find(product => product.name === cartKey).price.raw * cart[cartKey];
+    }, 0)
+}

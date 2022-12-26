@@ -10,7 +10,9 @@ class OrderStepHub extends React.Component {
         super();
         this.state = { 
             page: "cart",
-            shippingInfo: {},
+            shippingInfo: {
+                shippingMethod: "express",
+            },
             paymentInfo: {},
         };
     }
@@ -23,9 +25,10 @@ class OrderStepHub extends React.Component {
     }
 
     handleFieldChange = event => {
-        const { name: sender, value } = event.target;
+        const { name: sender, value, type, id } = event.target;
         const infoObjKey = sender.startsWith("shipping") ? "shippingInfo" : "paymentInfo";
-        const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
+        let valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
+        if (type === "radio") valToSet = id;
         this.setState(prevState => ({
             ...prevState,
             [infoObjKey]: {
@@ -44,15 +47,24 @@ class OrderStepHub extends React.Component {
         const { 
             page,
             shippingInfo,
+            shippingInfo: { shippingMethod },
             paymentInfo,
         } = this.state;
         return (
             <div>
                 <button name="browsing" onClick={navigateFunction}>Back To Home</button>
-                {page === "cart" && <Cart appStateInfo={appStateInfo} navFunction={this.navigate} changeItemQuantityFunction={changeItemQuantityFunction} />}
+                {page === "cart" && 
+                    <Cart 
+                        appStateInfo={appStateInfo} 
+                        shippingMethod={shippingMethod}
+                        navFunction={this.navigate} 
+                        changeItemQuantityFunction={changeItemQuantityFunction} 
+                    />
+                }
                 {page === "shipping" && 
                     <ShippingInfo 
                         fieldValues={shippingInfo} 
+                        appStateInfo={appStateInfo}
                         navFunction={this.navigate} 
                         fieldChangeFunction={this.handleFieldChange} 
                     />
@@ -60,11 +72,18 @@ class OrderStepHub extends React.Component {
                 {page === "payment" && 
                     <PaymentInfo 
                         fieldValues={paymentInfo} 
+                        appStateInfo={appStateInfo}
+                        shippingMethod={shippingMethod}
                         navFunction={this.navigate} 
                         fieldChangeFunction={this.handleFieldChange} 
                     />
                 }
-                {page === "confirm" && <OrderConfirmation />}
+                {page === "confirm" && 
+                    <OrderConfirmation 
+                        appStateInfo={appStateInfo}
+                        shippingMethod={shippingMethod}
+                    />
+                }
             </div>
         )
     }

@@ -1,8 +1,9 @@
 import React from "react";
 import { fieldNames } from "../../../constants";
 import { blurComponentField } from "../../../utility";
-import { validationFunctions } from "../../../validation";
 import InputField from "../../Common/InputField/InputField";
+import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
+import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
 
 class PaymentInfo extends React.Component {
     constructor() {
@@ -23,6 +24,12 @@ class PaymentInfo extends React.Component {
                 paymentCardExpiryYear,
                 paymentCardSecurityCode,
             },
+            appStateInfo,
+            appStateInfo: {
+                cart,
+                products,
+            },
+            shippingMethod,
             navFunction,
             fieldChangeFunction,
         } = this.props;
@@ -66,10 +73,12 @@ class PaymentInfo extends React.Component {
                 value: paymentCardSecurityCode,
                 errorText: securityCodeError,
             },
-        ]
+        ];
         return (
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
+                <ProductReviewArea appStateInfo={appStateInfo} />
+                <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="shipping" onClick={navFunction}>Back To Shipping</button>
                 <button name="confirm" onClick={navFunction}>Pay Now</button>
             </div>

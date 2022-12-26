@@ -65,6 +65,8 @@ export const creditCardLogos = {
 export const shippingStandardDescription = "Delivery in 4-6 business days";
 export const shippingExpressDescription = "Delivery in 1-3 business days";
 
+export const taxRate = 0.07;
+
 export const countries = [
     "Afghanistan",
     "Albania",
