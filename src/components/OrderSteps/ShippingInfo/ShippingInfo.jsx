@@ -1,5 +1,5 @@
 import React from "react";
-import { fieldNames } from "../../../constants";
+import { countries, fieldNames } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
@@ -88,12 +88,16 @@ class ShippingInfo extends React.Component {
             {
                 name: fieldNames.shippingCountry,
                 labelText: "Country",
+                type: "select",
+                options: countries,
                 value: shippingCountry,
                 errorText: countryError,
             },
             {
                 name: fieldNames.shippingZip,
                 labelText: "Zip Code",
+                type: "number",
+                min: "0",
                 value: shippingZip,
                 errorText: zipError,
             },

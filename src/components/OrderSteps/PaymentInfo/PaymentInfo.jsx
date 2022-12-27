@@ -1,6 +1,6 @@
 import React from "react";
 import { fieldNames } from "../../../constants";
-import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
+import { blurComponentField, numberArray, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
@@ -66,18 +66,24 @@ class PaymentInfo extends React.Component {
             {
                 name: fieldNames.paymentCardExpiryMonth,
                 labelText: "Expiry Month",
+                type: "select",
+                options: numberArray(1, 12),
                 value: paymentCardExpiryMonth,
                 errorText: expiryMonthError,
             },
             {
                 name: fieldNames.paymentCardExpiryYear,
                 labelText: "Expiry Year",
+                type: "select",
+                options: numberArray(2023, 2032),
                 value: paymentCardExpiryYear,
                 errorText: expiryYearError,
             },
             {
                 name: fieldNames.paymentCardSecurityCode,
                 labelText: "CVV",
+                type: "number",
+                min: "111",
                 value: paymentCardSecurityCode,
                 errorText: securityCodeError,
             },
