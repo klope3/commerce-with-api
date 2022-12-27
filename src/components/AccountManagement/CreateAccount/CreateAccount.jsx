@@ -1,5 +1,5 @@
 import React from "react";
-import { fieldNames } from "../../../constants";
+import { fieldNames } from "../../../constants"; //should probably stop using this
 import { changeComponentField } from "../../../utility";
 import { validationFunctions } from "../../../validation";
 import InputField from "../../Common/InputField/InputField";

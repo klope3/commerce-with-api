@@ -11,9 +11,22 @@ class OrderStepHub extends React.Component {
         this.state = { 
             page: "cart",
             shippingInfo: {
+                shippingTitle: "",
+                shippingAddress: "",
+                shippingFullName: "",
+                shippingCity: "",
+                shippingCountry: "",
+                shippingState: "",
+                shippingZip: "",
                 shippingMethod: "express",
             },
-            paymentInfo: {},
+            paymentInfo: {
+                paymentCardholder: "",
+                paymentCardNumber: "",
+                paymentCardExpiryMonth: "",
+                paymentCardExpiryYear: "",
+                paymentCardSecurityCode: "",
+            },
         };
     }
 

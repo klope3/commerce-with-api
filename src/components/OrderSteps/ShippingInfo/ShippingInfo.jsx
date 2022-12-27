@@ -1,22 +1,30 @@
 import React from "react";
 import { fieldNames } from "../../../constants";
-import { blurComponentField } from "../../../utility";
+import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
 
 class ShippingInfo extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             errors: {},
         };
+        this.navFunction = props.navFunction;
     }
 
     handleBlur = event => blurComponentField(this, event);
 
+    clickGoToPayment = fieldValues => {
+        if (validateAllComponentFieldValues(this, fieldValues)) {
+            this.navFunction({ target: { name: "payment" } });
+        }
+    }
+
     render() {
         const { 
+            fieldValues,
             fieldValues: {
                 shippingTitle,
                 shippingAddress,
@@ -116,7 +124,7 @@ class ShippingInfo extends React.Component {
                 <ProductReviewArea appStateInfo={appStateInfo} />
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="cart" onClick={navFunction}>Back To Cart</button>
-                <button name="payment" onClick={navFunction}>Go To Payment</button>
+                <button name="payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
             </div>
         )
     }

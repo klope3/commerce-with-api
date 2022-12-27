@@ -41,6 +41,21 @@ export const blurComponentField = (component, event) => {
     }));
 }
 
+export const validateAllComponentFieldValues = (component, fieldValues) => {
+    const newErrors = {};
+    let errorFound = false;
+    for (const key in fieldValues) {
+        const error = validationFunctions[key] ? validationFunctions[key](fieldValues[key]) : undefined;
+        if (error) errorFound = true;
+        newErrors[key] = error;
+    }
+    component.setState(prevState => ({
+        ...prevState,
+        errors: newErrors,
+    }));
+    return !errorFound;
+}
+
 export const calculateCartTotal = (cart, products) => {
     return Object.keys(cart).reduce((accum, cartKey) => {
         return accum + products.find(product => product.name === cartKey).price.raw * cart[cartKey];

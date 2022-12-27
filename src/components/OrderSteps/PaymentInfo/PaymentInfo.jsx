@@ -1,22 +1,30 @@
 import React from "react";
 import { fieldNames } from "../../../constants";
-import { blurComponentField } from "../../../utility";
+import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
 
 class PaymentInfo extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             errors: {},
         };
+        this.navFunction = props.navFunction;
     }
 
     handleBlur = event => blurComponentField(this, event);
 
+    clickConfirmOrder = fieldValues => {
+        if (validateAllComponentFieldValues(this, fieldValues)) {
+            this.navFunction({ target: { name: "confirm" } });
+        }
+    }
+
     render() {
         const { 
+            fieldValues,
             fieldValues: {
                 paymentCardholder,
                 paymentCardNumber,
@@ -80,7 +88,7 @@ class PaymentInfo extends React.Component {
                 <ProductReviewArea appStateInfo={appStateInfo} />
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="shipping" onClick={navFunction}>Back To Shipping</button>
-                <button name="confirm" onClick={navFunction}>Pay Now</button>
+                <button name="confirm" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
             </div>
         )
     }
