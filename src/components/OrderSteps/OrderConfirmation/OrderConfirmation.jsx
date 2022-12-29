@@ -11,10 +11,10 @@ class OrderConfirmation extends React.Component {
             shippingMethod,
         } = this.props;
         return (
-            <div>
+            <>
                 <div>Your Order is Confirmed</div>
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-            </div>
+            </>
         )
     }
 }

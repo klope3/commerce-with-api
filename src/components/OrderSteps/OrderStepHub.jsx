@@ -64,7 +64,7 @@ class OrderStepHub extends React.Component {
             paymentInfo,
         } = this.state;
         return (
-            <div>
+            <>
                 <button name="browsing" onClick={navigateFunction}>Back To Home</button>
                 {page === "cart" && 
                     <Cart 
@@ -97,7 +97,7 @@ class OrderStepHub extends React.Component {
                         shippingMethod={shippingMethod}
                     />
                 }
-            </div>
+            </>
         )
     }
 }

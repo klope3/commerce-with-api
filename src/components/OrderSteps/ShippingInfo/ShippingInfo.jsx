@@ -115,7 +115,7 @@ class ShippingInfo extends React.Component {
             },
         ]
         return (
-            <div>
+            <>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
                 <div>
                     {radios.map(radio => (
@@ -129,7 +129,7 @@ class ShippingInfo extends React.Component {
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="cart" onClick={navFunction}>Back To Cart</button>
                 <button name="payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
-            </div>
+            </>
         )
     }
 }

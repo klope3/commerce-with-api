@@ -208,7 +208,7 @@ class AppHub extends React.Component {
             productCategories,
         };
         return (
-            <div>
+            <>
                 {page === "account" && 
                     <AccountManagementHub 
                         navigateFunction={this.navigateApp} 
@@ -233,7 +233,7 @@ class AppHub extends React.Component {
                 }
                 {/* {loading && <div>Loading...</div>}
                 {errorMessage && <div className="error-text">{errorMessage}</div>} */}
-            </div>
+            </>
         )
     }
 }

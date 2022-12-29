@@ -77,10 +77,10 @@ class BrowsingPage extends React.Component {
             searchString,
             focusedProduct,
         } = this.state;
-        const focusedProductObj = products.find(product => product.name === focusedProduct);
+        const focusedProductObj = products && products.find(product => product.name === focusedProduct);
         return (
-            <>
-                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
+            <div>
+                <Header appStateInfo={appStateInfo} spreadContent={true} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <SearchBar changeSortingFunction={this.changeSortingFunction} changeSearchFunction={this.changeSearchString} />
                 <div className="filter-list-container">
                     <FilterBar productAttributes={productAttributes} productCategories={productCategories} changeFilterFunction={this.changeFilter} />
@@ -88,7 +88,7 @@ class BrowsingPage extends React.Component {
                 </div>
                 <Footer />
                 {focusedProduct && <ProductModal product={focusedProductObj} focusProductFunction={this.setProductFocus} quantityInCart={cart[focusedProductObj.name] ? cart[focusedProductObj.name] : 0} changeItemQuantityFunction={changeItemQuantityFunction} />}
-            </>
+            </div>
         )
     }
 }

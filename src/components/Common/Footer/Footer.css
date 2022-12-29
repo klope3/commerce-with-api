@@ -1,0 +1,22 @@
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .link-button {
+    display: block;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.footer-heading {
+    font-size: var(--size-20);
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-size: var(--size-30);
+    font-weight: bold;
+}

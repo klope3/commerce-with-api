@@ -1,0 +1,12 @@
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 7px;
+    position: relative;
+}
+
+.account-greeting {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

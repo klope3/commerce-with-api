@@ -89,13 +89,13 @@ class PaymentInfo extends React.Component {
             },
         ];
         return (
-            <div>
+            <>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
                 <ProductReviewArea appStateInfo={appStateInfo} />
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="shipping" onClick={navFunction}>Back To Shipping</button>
                 <button name="confirm" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
-            </div>
+            </>
         )
     }
 }

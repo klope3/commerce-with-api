@@ -2,6 +2,7 @@ import React from "react";
 import { mainPageGoButtonText, mainPageHookText } from "../../../constants";
 import Footer from "../../Common/Footer/Footer";
 import Header from "../../Common/Header/Header";
+import "./MainPage.css";
 
 class MainPage extends React.Component {
     render() {
@@ -12,12 +13,14 @@ class MainPage extends React.Component {
             appStateInfo,
         } = this.props;
         return (
-            <div>
+            <div className="main-page">
                 <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} />
-                <h2>{mainPageHookText}</h2>
-                <div>
-                    {/* <input type="text" name="searchInput" id="searchInput" /> */}
-                    <button name="browsing" onClick={navigateBrowsingFunction}>{mainPageGoButtonText}</button>
+                <div className="main-bg"></div>
+                <div className="container-hero">
+                    <h2>{mainPageHookText}</h2>
+                    <div>
+                        <button name="browsing" className="button-major" onClick={navigateBrowsingFunction}>{mainPageGoButtonText}</button>
+                    </div>
                 </div>
                 <Footer />
             </div>

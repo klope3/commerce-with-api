@@ -4,6 +4,7 @@ import DateRangeGroup from "../../Common/InputGroups/DateRangeGroup/DateRangeGro
 import MultiSelectGroup from "../../Common/InputGroups/MultiSelectGroup/MultiSelectGroup";
 import NumberRangeGroup from "../../Common/InputGroups/NumberRangeGroup/NumberRangeGroup";
 import StyledToggle from "../../Common/StyledToggle/StyledToggle";
+import "./FilterBar.css";
 
 class FilterBar extends React.Component {
     chooseComponentForAttribute = (attribute, changeFunction) => {
@@ -57,7 +58,7 @@ class FilterBar extends React.Component {
     render() {
         const { productAttributes, productCategories, changeFilterFunction } = this.props;
         return (
-            <div>
+            <div className="filter-bar">
                 {productAttributes.data && productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
                 <NumberRangeGroup headingText="Price" dataTag="price" changeFunction={changeFilterFunction} />
                 {productCategories.data && <MultiSelectGroup headingText="Category" dataTag="category" options={productCategories.data.map(item => item.name)} changeFunction={changeFilterFunction} />}

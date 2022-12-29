@@ -16,7 +16,7 @@ class Cart extends React.Component {
 
         } = this.props;
         return (
-            <div>
+            <>
                 <div>
                     {Object.keys(cart).map(cartKey => ( parseInt(cart[cartKey]) === 0 ? undefined :
                         <CartItemRow
@@ -28,7 +28,7 @@ class Cart extends React.Component {
                 </div>
                 <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
                 <button name="shipping" onClick={navFunction}>Go To Shipping</button>
-            </div>
+            </>
         )
     }
 }

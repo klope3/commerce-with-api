@@ -28,7 +28,7 @@ class AccountManagementHub extends React.Component {
         const { navigateFunction, createAccountFunction, signInFunction } = this.props;
         const { page } = this.state;
         return (
-            <div>
+            <>
                 <button onClick={navigateFunction} name="browsing">{"< Home"}</button>
                 <div>
                     {this.radioOption("Sign In", "signIn", page === "signIn")}
@@ -36,7 +36,7 @@ class AccountManagementHub extends React.Component {
                 </div>
                 {page === "signIn" && <SignIn signInFunction={signInFunction} />}
                 {page === "createAccount" && <CreateAccount createAccountFunction={createAccountFunction} />}
-            </div>
+            </>
         )
     }
 }
