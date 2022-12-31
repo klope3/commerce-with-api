@@ -1,6 +1,8 @@
 import React from "react";
 import CreateAccount from "./CreateAccount/CreateAccount";
 import SignIn from "./SignIn/SignIn";
+import "./AccountManagementHub.css";
+import { brandName } from "../../constants";
 
 class AccountManagementHub extends React.Component {
     constructor() {
@@ -28,15 +30,20 @@ class AccountManagementHub extends React.Component {
         const { navigateFunction, createAccountFunction, signInFunction } = this.props;
         const { page } = this.state;
         return (
-            <>
-                <button onClick={navigateFunction} name="browsing">{"< Home"}</button>
-                <div>
-                    {this.radioOption("Sign In", "signIn", page === "signIn")}
-                    {this.radioOption("Create Account", "createAccount", page === "createAccount")}
+            <div className="account-hub">
+                <div className="account-hub-center">
+                    <div className="logo">{brandName}</div>
+                    <div className="account-input-area">
+                        <button onClick={navigateFunction} name="browsing">{"< Home"}</button>
+                        <div>
+                            {this.radioOption("Sign In", "signIn", page === "signIn")}
+                            {this.radioOption("Create Account", "createAccount", page === "createAccount")}
+                        </div>
+                        {page === "signIn" && <SignIn signInFunction={signInFunction} />}
+                        {page === "createAccount" && <CreateAccount createAccountFunction={createAccountFunction} />}
+                    </div>
                 </div>
-                {page === "signIn" && <SignIn signInFunction={signInFunction} />}
-                {page === "createAccount" && <CreateAccount createAccountFunction={createAccountFunction} />}
-            </>
+            </div>
         )
     }
 }

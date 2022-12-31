@@ -1,0 +1,8 @@
+.search-bar {
+    background-color: var(--gray-light);
+    display: flex;
+    padding: var(--padding-beta);
+    justify-content: end;
+    gap: var(--padding-gamma);
+    align-items: center;
+}

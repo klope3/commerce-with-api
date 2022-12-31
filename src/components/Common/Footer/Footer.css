@@ -5,6 +5,7 @@
 
 footer .link-button {
     display: block;
+    color: var(--color-delta);
 }
 
 .copyright {
@@ -19,4 +20,10 @@ footer .link-button {
 .logo {
     font-size: var(--size-30);
     font-weight: bold;
+}
+
+.logo,
+.footer-heading,
+.copyright {
+    color: var(--text-light);
 }

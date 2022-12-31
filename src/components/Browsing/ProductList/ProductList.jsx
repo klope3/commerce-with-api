@@ -78,10 +78,10 @@ class ProductList extends React.Component {
         const filteredProducts = searchedProducts && filters ? this.filterProducts(searchedProducts, filters, searchString) : undefined;
         const sortedProducts = filteredProducts ? sortingFunction(filteredProducts) : undefined;
         return (
-            <div>
+            <div className="product-list-container">
                 {errorMessage && <div className="error-text">{errorMessage}</div>}
                 {loading && <div>Loading...</div>}
-                {!errorMessage && !loading && <div>Found {sortedProducts.length} results.</div>}
+                {!errorMessage && !loading && <div className="result-count">Found {sortedProducts.length} results.</div>}
                 <div className="product-list">
                     {!errorMessage && !loading && sortedProducts
                         .map(product => {

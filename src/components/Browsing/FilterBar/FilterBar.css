@@ -1,4 +1,4 @@
 .filter-bar {
     width: 250px;
-    background-color: var(--color-alpha);
+    padding: var(--padding-alpha);
 }

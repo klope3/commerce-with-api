@@ -1,3 +1,7 @@
 .input-row {
     margin: 20px 0;
 }
+
+.input-row label {
+    display: block;
+}

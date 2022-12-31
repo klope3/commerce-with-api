@@ -19,6 +19,43 @@ export const fakeData = [
                 name: "Category 1",
             },
         ],
+        attributes: [
+            {
+                name: "Author",
+                value: [
+                    {
+                        value: "Carlos Berry",
+                    },
+                ],
+            },
+            {
+                name: "File Formats",
+                value: [
+                    {
+                        label: "FBX",
+                    },
+                    {
+                        label: "OBJ",
+                    },
+                ],
+            },
+            {
+                name: "Polygon Count",
+                value: 9000,
+            },
+            {
+                name: "Publication Date",
+                value: "2021/10/21",
+            },
+            {
+                name: "Game Ready",
+                value: true,
+            },
+            {
+                name: "Animation Ready",
+                value: false,
+            },
+        ],
     },
     {
         name: "Thing 2",
@@ -33,6 +70,43 @@ export const fakeData = [
         categories: [
             {
                 name: "Category 1",
+            },
+        ],
+        attributes: [
+            {
+                name: "Author",
+                value: [
+                    {
+                        value: "Nellie Martin",
+                    },
+                ],
+            },
+            {
+                name: "File Formats",
+                value: [
+                    {
+                        label: "3DS Max",
+                    },
+                    {
+                        label: "OBJ",
+                    },
+                ],
+            },
+            {
+                name: "Polygon Count",
+                value: 41000,
+            },
+            {
+                name: "Publication Date",
+                value: "2015/02/03",
+            },
+            {
+                name: "Game Ready",
+                value: false,
+            },
+            {
+                name: "Animation Ready",
+                value: false,
             },
         ],
     },
@@ -51,6 +125,46 @@ export const fakeData = [
                 name: "Category 2",
             },
         ],
+        attributes: [
+            {
+                name: "Author",
+                value: [
+                    {
+                        value: "Jennifer Bennett",
+                    },
+                ],
+            },
+            {
+                name: "File Formats",
+                value: [
+                    {
+                        label: "FBX",
+                    },
+                    {
+                        label: "Cinema 4D",
+                    },
+                    {
+                        label: "Blender",
+                    },
+                ],
+            },
+            {
+                name: "Polygon Count",
+                value: 13000,
+            },
+            {
+                name: "Publication Date",
+                value: "2018/08/23",
+            },
+            {
+                name: "Game Ready",
+                value: true,
+            },
+            {
+                name: "Animation Ready",
+                value: true,
+            },
+        ],
     },
     {
         name: "Collectible 4",
@@ -67,6 +181,43 @@ export const fakeData = [
                 name: "Category 4",
             },
         ],
+        attributes: [
+            {
+                name: "Author",
+                value: [
+                    {
+                        value: "Ben Mcdonalid",
+                    },
+                ],
+            },
+            {
+                name: "File Formats",
+                value: [
+                    {
+                        label: "Blender",
+                    },
+                    {
+                        label: "OBJ",
+                    },
+                ],
+            },
+            {
+                name: "Polygon Count",
+                value: 6000,
+            },
+            {
+                name: "Publication Date",
+                value: "2020/02/07",
+            },
+            {
+                name: "Game Ready",
+                value: true,
+            },
+            {
+                name: "Animation Ready",
+                value: true,
+            },
+        ],
     },
     {
         name: "Figurine 5",
@@ -81,6 +232,46 @@ export const fakeData = [
         categories: [
             {
                 name: "Category 4",
+            },
+        ],
+        attributes: [
+            {
+                name: "Author",
+                value: [
+                    {
+                        value: "Bella Alexander",
+                    },
+                ],
+            },
+            {
+                name: "File Formats",
+                value: [
+                    {
+                        label: "FBX",
+                    },
+                    {
+                        label: "3DS Max",
+                    },
+                    {
+                        label: "Cinema 4D",
+                    },
+                ],
+            },
+            {
+                name: "Polygon Count",
+                value: 24000,
+            },
+            {
+                name: "Publication Date",
+                value: "2019/11/05",
+            },
+            {
+                name: "Game Ready",
+                value: false,
+            },
+            {
+                name: "Animation Ready",
+                value: false,
             },
         ],
     },

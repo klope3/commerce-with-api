@@ -4,8 +4,12 @@
     --color-gamma: rgb(112, 139, 117);
     --color-delta: rgb(154, 184, 122);
     --color-epsilon: rgb(248, 249, 145);
+    --color-epsilon-hover: rgb(255, 204, 85);
+    --gray-light: rgb(215, 215, 215);
+    --gray-mid: rgb(186, 186, 186);
 
-    --text-base: rgb(214, 214, 214);
+    --text-base: black;
+    --text-light: rgb(215, 215, 215);
 
     --max-content-width: 1024px;
 
@@ -14,6 +18,11 @@
     --size-20: 1.25rem;
     --size-24: 1.5rem;
     --size-30: 1.875rem;
+
+    --padding-alpha: 5px;
+    --padding-beta: 10px;
+    --padding-gamma: 20px;
+    --padding-epsilon: 35px;
 }
 
 * {
@@ -63,10 +72,21 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    color: var(--color-epsilon-hover);
+    border-color: var(--color-epsilon-hover);
+}
+
 .button-major {
     background-color: var(--color-epsilon);
     color: var(--color-alpha);
     font-weight: bold;
+}
+
+.button-major:hover {
+    background-color: var(--color-epsilon-hover);
+    border-color: var(--color-epsilon-hover);
+    color: var(--color-alpha);
 }
 
 .link-button {

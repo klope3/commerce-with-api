@@ -1,0 +1,33 @@
+.search-field input {
+    border: none;
+    flex: 1;
+}
+
+.search-field input:focus-visible {
+    outline: none;
+}
+
+.search-field {
+    background-color: white;
+    padding-left: var(--padding-beta);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 450px;
+    display: flex;
+}
+
+.search-field button {
+    background-color: var(--color-epsilon);
+    color: black;
+    border-radius: 0;
+    border: none;
+}
+
+.search-field button:hover {
+    background-color: var(--color-epsilon-hover);
+}
+
+.search-field input,
+.search-field button {
+    display: block;
+}

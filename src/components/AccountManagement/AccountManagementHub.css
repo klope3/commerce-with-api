@@ -1,0 +1,35 @@
+.account-hub {
+    background-color: var(--color-alpha);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.account-hub * {
+    color: var(--text-light);
+}
+
+.account-hub-center {
+    max-width: 500px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.account-hub-center .logo {
+    position: absolute;
+    left: -77px;
+    top: 298px;
+    font-size: 50px;
+}
+
+.account-input-area {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: var(--padding-epsilon);
+    width: 350px;
+}
