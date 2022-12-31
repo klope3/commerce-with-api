@@ -1,5 +1,6 @@
 import React from "react";
 import ProductReviewRow from "../ProductReviewRow/ProductReviewRow";
+import "./ProductReviewArea.css";
 
 class ProductReviewArea extends React.Component {
     render() {
@@ -10,7 +11,7 @@ class ProductReviewArea extends React.Component {
             },
         } = this.props;
         return (
-            <div>
+            <div className="product-review-area">
                 {Object.keys(cart).map(cartKey => (
                     <>{cart[cartKey] > 0 && <ProductReviewRow 
                         key={cartKey}

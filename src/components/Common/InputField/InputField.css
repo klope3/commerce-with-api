@@ -5,3 +5,18 @@
 .input-row label {
     display: block;
 }
+
+.input-row .input-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: var(--padding-beta);
+}
+
+.input-row .input-container input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.input-row .input-container input:focus-visible {
+    outline: none;
+}

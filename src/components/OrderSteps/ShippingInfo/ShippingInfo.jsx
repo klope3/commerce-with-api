@@ -1,5 +1,5 @@
 import React from "react";
-import { countries, fieldNames } from "../../../constants";
+import { brandName, countries, fieldNames } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
@@ -115,21 +115,28 @@ class ShippingInfo extends React.Component {
             },
         ]
         return (
-            <>
-                {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
+            <div className="order-step-flex">
                 <div>
-                    {radios.map(radio => (
-                        <label key={radio.id} htmlFor={radio.id}>
-                            <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
-                            {radio.text}
-                        </label>
-                    ))}
+                    <div className="order-step-heading">Shipping</div>
                 </div>
-                <ProductReviewArea appStateInfo={appStateInfo} />
-                <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                <button name="cart" onClick={navFunction}>Back To Cart</button>
-                <button name="payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
-            </>
+                <div className="order-step-input-area">
+                    {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
+                    <div>
+                        {radios.map(radio => (
+                            <label key={radio.id} htmlFor={radio.id}>
+                                <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
+                                {radio.text}
+                            </label>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <ProductReviewArea appStateInfo={appStateInfo} />
+                    <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
+                    <button name="cart" onClick={navFunction}>Back To Cart</button>
+                    <button name="payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
+                </div>
+            </div>
         )
     }
 }

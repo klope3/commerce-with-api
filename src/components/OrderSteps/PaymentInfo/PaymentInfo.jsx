@@ -89,13 +89,18 @@ class PaymentInfo extends React.Component {
             },
         ];
         return (
-            <>
-                {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
-                <ProductReviewArea appStateInfo={appStateInfo} />
-                <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                <button name="shipping" onClick={navFunction}>Back To Shipping</button>
-                <button name="confirm" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
-            </>
+            <div className="order-step-flex">
+                <div>
+                    <div className="order-step-heading">Payment</div>
+                </div>
+                <div className="order-step-input-area">{fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}</div>
+                <div>
+                    <ProductReviewArea appStateInfo={appStateInfo} />
+                    <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
+                    <button name="shipping" onClick={navFunction}>Back To Shipping</button>
+                    <button name="confirm" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
+                </div>
+            </div>
         )
     }
 }

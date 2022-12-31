@@ -1,0 +1,26 @@
+.order-hub .input-row .input-container {
+    border: 1px solid gray;
+    padding: var(--padding-beta);
+}
+
+.order-hub {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.order-step-flex {
+    display: flex;
+    justify-content: center;
+    gap: var(--padding-epsilon);
+}
+
+.order-step-heading {
+    font-size: var(--size-30);
+    margin-top: 50px;
+}
+
+.order-step-input-area {
+    width: 320px;
+    border-left: 1px solid gray;
+    padding-left: var(--padding-gamma);
+}

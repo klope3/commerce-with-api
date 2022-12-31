@@ -7,7 +7,8 @@
     bottom: 0;
 }
 
-.account-hub * {
+.account-hub label,
+.account-hub input {
     color: var(--text-light);
 }
 
@@ -30,6 +31,11 @@
 
 .account-input-area {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: var(--padding-epsilon);
+    padding: calc(var(--padding-epsilon) - 10px) var(--padding-epsilon);
     width: 350px;
+    border-radius: 30px;
+}
+
+.account-hub button {
+    margin: var(--padding-beta) 0;
 }

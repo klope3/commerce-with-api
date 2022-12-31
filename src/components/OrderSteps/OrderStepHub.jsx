@@ -4,6 +4,7 @@ import ShippingInfo from "./ShippingInfo/ShippingInfo";
 import PaymentInfo from "./PaymentInfo/PaymentInfo";
 import OrderConfirmation from "./OrderConfirmation/OrderConfirmation";
 import { formattingFunctions } from "../../formatters";
+import "./OrderHub.css";
 
 class OrderStepHub extends React.Component {
     constructor() {
@@ -64,7 +65,7 @@ class OrderStepHub extends React.Component {
             paymentInfo,
         } = this.state;
         return (
-            <>
+            <div className="order-hub">
                 <button name="browsing" onClick={navigateFunction}>Back To Home</button>
                 {page === "cart" && 
                     <Cart 
@@ -97,7 +98,7 @@ class OrderStepHub extends React.Component {
                         shippingMethod={shippingMethod}
                     />
                 }
-            </>
+            </div>
         )
     }
 }

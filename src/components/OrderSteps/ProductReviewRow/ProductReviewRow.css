@@ -1,0 +1,12 @@
+.product-review-row {
+    display: flex;
+    margin: var(--padding-alpha) 0;
+    gap: var(--padding-alpha);
+}
+
+.product-review-img {
+    width: 100px;
+    height: 70px;
+    background-size: cover;
+    background-position: center;
+}

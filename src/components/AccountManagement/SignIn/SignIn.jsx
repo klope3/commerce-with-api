@@ -43,7 +43,7 @@ class SignIn extends React.Component {
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} changeFunction={this.changeField} />)}
                 {failedAttempt && <div className="error-text">Invalid username or password.</div>}
-                <button onClick={this.clickSignIn}>Sign In</button>
+                <button className="button-major" onClick={this.clickSignIn}>Sign In</button>
             </div>
         )
     }
