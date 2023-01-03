@@ -15,25 +15,25 @@ class PriceBreakdown extends React.Component {
         const shipping = shippingMethod === "express" ? expressShippingPrice : 0;
         const rows = [
             {
-                label: "Subtotal:",
+                label: "Subtotal",
                 value: subtotal,
                 labelClass: "minor-text",
                 valueClass: "",
             },
             {
-                label: "Shipping:",
+                label: "Shipping",
                 value: shipping,
                 labelClass: "minor-text",
                 valueClass: "",
             },
             {
-                label: "Sales Tax:",
+                label: "Sales Tax",
                 value: tax,
                 labelClass: "minor-text",
                 valueClass: "",
             },
             {
-                label: "Total:",
+                label: "Total",
                 value: subtotal + tax + shipping,
                 labelClass: "",
                 valueClass: "bold-text",
@@ -42,8 +42,8 @@ class PriceBreakdown extends React.Component {
         return (
             <div className="price-breakdown">
                 {rows.map(row => (
-                    <div>
-                        <div className={row.labelClass}>{row.label}</div>
+                    <div key={row.label}>
+                        <div className={row.labelClass}>{row.label}:</div>
                         <div className={row.valueClass}>${row.value.toFixed(2)}</div>
                     </div>))
                 }

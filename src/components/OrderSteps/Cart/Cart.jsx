@@ -16,11 +16,13 @@ class Cart extends React.Component {
             changeItemQuantityFunction,
 
         } = this.props;
+        const emptyCart = Object.keys(cart).reduce((accum, key) => { console.log(key + " is " + cart[key]); return accum + cart[key]}, 0) === 0;
         return (
             <div className="order-step-flex">
                 <div className="order-step-heading">Your Cart</div>
                 <div className="order-step-input-area" id="cart-area">
-                    {Object.keys(cart).map(cartKey => ( parseInt(cart[cartKey]) === 0 ? undefined :
+                    {emptyCart && <div className="empty-cart-message">Your cart is empty.</div>}
+                    {!emptyCart && Object.keys(cart).map(cartKey => ( parseInt(cart[cartKey]) === 0 ? undefined :
                         <CartItemRow
                             key={cartKey} 
                             product={products.find(product => product.name === cartKey)} 
@@ -30,7 +32,7 @@ class Cart extends React.Component {
                 </div>
                 <div>
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="shipping" className="button-major" onClick={navFunction}>Go To Shipping</button>
+                    <button name="shipping" className="button-major" onClick={navFunction} disabled={emptyCart}>Go To Shipping</button>
                 </div>
             </div>
         )

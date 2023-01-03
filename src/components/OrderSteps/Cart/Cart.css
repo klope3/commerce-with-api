@@ -1,3 +1,10 @@
 #cart-area {
     width: 580px;
 }
+
+.empty-cart-message {
+    font-size: var(--size-30);
+    color: var(--gray-mid);
+    text-align: center;
+    margin-top: 50px;
+}

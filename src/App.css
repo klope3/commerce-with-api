@@ -86,12 +86,21 @@ button:hover {
     background-color: var(--color-epsilon);
     color: var(--color-alpha);
     font-weight: bold;
+    padding: var(--padding-beta) var(--padding-gamma);
+    border: none;
 }
 
 .button-major:hover {
     background-color: var(--color-epsilon-hover);
     border-color: var(--color-epsilon-hover);
     color: var(--color-alpha);
+}
+
+.button-major:disabled {
+    background-color: var(--gray-light);
+    color: gray;
+    border: none;
+    cursor: initial;
 }
 
 .button-minor {
