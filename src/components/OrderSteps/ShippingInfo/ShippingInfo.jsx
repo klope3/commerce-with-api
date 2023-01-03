@@ -133,8 +133,8 @@ class ShippingInfo extends React.Component {
                 <div>
                     <ProductReviewArea appStateInfo={appStateInfo} />
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="cart" onClick={navFunction}>Back To Cart</button>
-                    <button name="payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
+                    <button name="cart" className="button-major" onClick={navFunction}>Back To Cart</button>
+                    <button name="payment" className="button-major" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
                 </div>
             </div>
         )

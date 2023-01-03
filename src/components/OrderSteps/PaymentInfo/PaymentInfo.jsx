@@ -97,8 +97,8 @@ class PaymentInfo extends React.Component {
                 <div>
                     <ProductReviewArea appStateInfo={appStateInfo} />
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="shipping" onClick={navFunction}>Back To Shipping</button>
-                    <button name="confirm" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
+                    <button name="shipping" className="button-major" onClick={navFunction}>Back To Shipping</button>
+                    <button name="confirm" className="button-major" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
                 </div>
             </div>
         )

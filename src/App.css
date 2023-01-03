@@ -5,6 +5,7 @@
     --color-delta: rgb(154, 184, 122);
     --color-epsilon: rgb(248, 249, 145);
     --color-epsilon-hover: rgb(255, 204, 85);
+    --gray-lighter: rgb(242, 242, 242);
     --gray-light: rgb(215, 215, 215);
     --gray-mid: rgb(186, 186, 186);
 
@@ -57,6 +58,10 @@ h1 {
     font-weight: bold;
 }
 
+.minor-text {
+    color: gray;
+}
+
 .container-main {
     max-width: var(--max-content-width);
     margin: 0 auto;
@@ -89,6 +94,21 @@ button:hover {
     color: var(--color-alpha);
 }
 
+.button-minor {
+    color: gray;
+    border-color: gray;
+    border-width: 1px;
+}
+
+.button-minor:hover {
+    color: black;
+    border-color: black;
+}
+
+.button-small {
+    padding: 5px 10px;
+}
+
 .link-button {
     border: none;
     padding: 0;
@@ -96,4 +116,16 @@ button:hover {
 
 .link-button:hover {
     text-decoration: underline;
+}
+
+.file-format {
+    background-color: var(--gray-light);
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.file-formats-flex {
+    display: flex;
+    gap: var(--padding-alpha);
+    flex-wrap: wrap;
 }

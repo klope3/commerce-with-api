@@ -10,10 +10,10 @@ class ProductReviewRow extends React.Component {
         return (
             <div className="product-review-row">
                 <div className="product-review-img" style={{backgroundImage: `url(${product.image.url})`}}></div>
-                <div>
-                    <div>{product.name}</div>
+                <div className="product-review-info">
+                    <div className="bold-text">{product.name}</div>
                     <div>Qty: {quantity}</div>
-                    <div>{product.price.formatted_with_symbol}</div>
+                    <div className="bold-text">{product.price.formatted_with_symbol}</div>
                 </div>
             </div>
         )

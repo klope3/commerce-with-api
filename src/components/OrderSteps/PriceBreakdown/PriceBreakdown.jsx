@@ -1,6 +1,7 @@
 import React from "react";
 import { expressShippingPrice, taxRate } from "../../../constants";
-import { calculateCartTotal } from "../../../utility";
+import { calculateCartTotal, roundToDecimalPlaces } from "../../../utility";
+import "./PriceBreakdown.css";
 
 class PriceBreakdown extends React.Component {
     render() {
@@ -9,15 +10,43 @@ class PriceBreakdown extends React.Component {
             products,
             shippingMethod,
         } = this.props;
-        const subtotal = calculateCartTotal(cart, products);
-        const tax = subtotal * taxRate;
+        const subtotal = roundToDecimalPlaces(calculateCartTotal(cart, products), 2);
+        const tax = roundToDecimalPlaces(subtotal * taxRate, 2);
         const shipping = shippingMethod === "express" ? expressShippingPrice : 0;
+        const rows = [
+            {
+                label: "Subtotal:",
+                value: subtotal,
+                labelClass: "minor-text",
+                valueClass: "",
+            },
+            {
+                label: "Shipping:",
+                value: shipping,
+                labelClass: "minor-text",
+                valueClass: "",
+            },
+            {
+                label: "Sales Tax:",
+                value: tax,
+                labelClass: "minor-text",
+                valueClass: "",
+            },
+            {
+                label: "Total:",
+                value: subtotal + tax + shipping,
+                labelClass: "",
+                valueClass: "bold-text",
+            },
+        ]
         return (
-            <div>
-                <div>Subtotal: ${subtotal}</div>
-                <div>Shipping: ${shipping}</div>
-                <div>Sales Tax: ${subtotal * taxRate}</div>
-                <div>Total: ${subtotal + tax + shipping}</div>
+            <div className="price-breakdown">
+                {rows.map(row => (
+                    <div>
+                        <div className={row.labelClass}>{row.label}</div>
+                        <div className={row.valueClass}>${row.value.toFixed(2)}</div>
+                    </div>))
+                }
             </div>
         )
     }

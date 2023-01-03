@@ -61,3 +61,5 @@ export const calculateCartTotal = (cart, products) => {
         return accum + products.find(product => product.name === cartKey).price.raw * cart[cartKey];
     }, 0)
 }
+
+export const roundToDecimalPlaces = (value, decimalPlaces) => Math.round(value * Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces);

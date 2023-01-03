@@ -46,7 +46,7 @@
 }
 
 .product-info-beta {
-    background-color: var(--gray-light);
+    background-color: var(--gray-lighter);
     flex: 1;
     padding: var(--padding-gamma);
     border-radius: 10px;
@@ -64,16 +64,4 @@
 
 .product-info-block {
     margin: var(--padding-beta) 0;
-}
-
-.file-format {
-    background-color: var(--gray-mid);
-    border-radius: 5px;
-    padding: 4px;
-}
-
-.file-formats-flex {
-    display: flex;
-    gap: var(--padding-alpha);
-    flex-wrap: wrap;
 }

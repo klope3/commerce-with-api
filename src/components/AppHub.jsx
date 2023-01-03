@@ -5,7 +5,7 @@ import AccountManagementHub from "./AccountManagement/AccountManagementHub";
 import BrowsingHub from "./Browsing/BrowsingHub/BrowsingHub";
 import OrderStepHub from "./OrderSteps/OrderStepHub";
 
-const useFakeData = true; //for development and testing only
+const useFakeData = false; //for development and testing only
 
 class AppHub extends React.Component {
     constructor() {

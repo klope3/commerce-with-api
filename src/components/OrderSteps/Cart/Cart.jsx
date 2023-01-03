@@ -2,6 +2,7 @@ import React from "react";
 import { calculateCartTotal } from "../../../utility";
 import CartItemRow from "../CartItemRow/CartItemRow";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
+import "./Cart.css";
 
 class Cart extends React.Component {
     render() {
@@ -16,8 +17,9 @@ class Cart extends React.Component {
 
         } = this.props;
         return (
-            <>
-                <div>
+            <div className="order-step-flex">
+                <div className="order-step-heading">Your Cart</div>
+                <div className="order-step-input-area" id="cart-area">
                     {Object.keys(cart).map(cartKey => ( parseInt(cart[cartKey]) === 0 ? undefined :
                         <CartItemRow
                             key={cartKey} 
@@ -26,9 +28,11 @@ class Cart extends React.Component {
                             changeItemQuantityFunction={changeItemQuantityFunction} />)
                     )}
                 </div>
-                <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                <button name="shipping" onClick={navFunction}>Go To Shipping</button>
-            </>
+                <div>
+                    <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
+                    <button name="shipping" className="button-major" onClick={navFunction}>Go To Shipping</button>
+                </div>
+            </div>
         )
     }
 }
