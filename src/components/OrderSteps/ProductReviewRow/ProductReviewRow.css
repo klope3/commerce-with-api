@@ -2,6 +2,7 @@
     display: flex;
     margin: var(--padding-alpha) 0;
     gap: var(--padding-alpha);
+    align-items: center;
 }
 
 .product-review-img {

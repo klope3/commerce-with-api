@@ -1,0 +1,29 @@
+.shipping-method-area {
+    border: 1px solid gray;
+    padding: var(--padding-beta);
+    border-radius: 10px;
+    margin-bottom: var(--padding-epsilon);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-beta);
+}
+
+.shipping-option {
+    display: flex;
+    align-items: center;
+    gap: var(--padding-alpha);
+}
+
+.small-field {
+    display: inline-block;
+    margin: 0 var(--padding-beta);
+}
+
+.small-field-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-field-flex .input-row {
+    margin: 0;
+}

@@ -1,9 +1,11 @@
 import React from "react";
-import { brandName, countries, fieldNames } from "../../../constants";
+import { brandName, countries, expressShippingPrice, fieldNames, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
+import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
+import "./ShippingInfo.css";
 
 class ShippingInfo extends React.Component {
     constructor(props) {
@@ -54,64 +56,89 @@ class ShippingInfo extends React.Component {
                 shippingZip: zipError,
             }
         } = this.state;
-        const fields = [
+        const fields1 = [
+        ];
+        const fields2 = [
+        ];
+        const fields3 = [
+        ];
+        const fieldGroups = [
             {
-                name: fieldNames.shippingTitle,
-                labelText: "Address Title",
-                value: shippingTitle,
-                errorText: titleError,
+                fields: [
+                    {
+                        name: fieldNames.shippingTitle,
+                        labelText: "Address Title",
+                        value: shippingTitle,
+                        errorText: titleError,
+                    },
+                    {
+                        name: fieldNames.shippingAddress,
+                        labelText: "Address",
+                        value: shippingAddress,
+                        errorText: addressError,
+                    },
+                    {
+                        name: fieldNames.shippingFullName,
+                        labelText: "Full Name",
+                        value: shippingFullName,
+                        errorText: nameError,
+                    },
+                    {
+                        name: fieldNames.shippingCity,
+                        labelText: "City",
+                        value: shippingCity,
+                        errorText: cityError,
+                    },
+                ],
             },
             {
-                name: fieldNames.shippingAddress,
-                labelText: "Address",
-                value: shippingAddress,
-                errorText: addressError,
+                fields: [
+                    {
+                        name: fieldNames.shippingState,
+                        labelText: "State",
+                        // rowClass: "small-field",
+                        value: shippingState,
+                        errorText: stateError,
+                    },
+                    {
+                        name: fieldNames.shippingZip,
+                        labelText: "Zip Code",
+                        // rowClass: "small-field",
+                        type: "number",
+                        min: "0",
+                        value: shippingZip,
+                        errorText: zipError,
+                    },
+                ],
+                groupClass: "small-field-flex",
             },
             {
-                name: fieldNames.shippingFullName,
-                labelText: "Full Name",
-                value: shippingFullName,
-                errorText: nameError,
-            },
-            {
-                name: fieldNames.shippingCity,
-                labelText: "City",
-                value: shippingCity,
-                errorText: cityError,
-            },
-            {
-                name: fieldNames.shippingState,
-                labelText: "State",
-                value: shippingState,
-                errorText: stateError,
-            },
-            {
-                name: fieldNames.shippingCountry,
-                labelText: "Country",
-                type: "select",
-                options: countries,
-                value: shippingCountry,
-                errorText: countryError,
-            },
-            {
-                name: fieldNames.shippingZip,
-                labelText: "Zip Code",
-                type: "number",
-                min: "0",
-                value: shippingZip,
-                errorText: zipError,
+                fields: [
+                    {
+                        name: fieldNames.shippingCountry,
+                        labelText: "Country",
+                        type: "select",
+                        options: countries,
+                        value: shippingCountry,
+                        errorText: countryError,
+                    },
+                ],
             },
         ];
         const radios = [
             {
                 id: "standard",
                 checked: shippingMethod === "standard",
-                text: "Standard"
+                title: "Standard",
+                description: shippingStandardDescription,
+                priceText: "FREE",
             },
             {
                 id: "express",
                 checked: shippingMethod === "express",
-                text: "Express"
+                title: "Express",
+                description: shippingExpressDescription,
+                priceText: `$${expressShippingPrice.toFixed(2)}`,
             },
         ]
         return (
@@ -120,14 +147,28 @@ class ShippingInfo extends React.Component {
                     <div className="order-step-heading">Shipping</div>
                 </div>
                 <div className="order-step-input-area">
-                    {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.handleBlur} changeFunction={fieldChangeFunction} />)}
-                    <div>
-                        {radios.map(radio => (
-                            <label key={radio.id} htmlFor={radio.id}>
-                                <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
-                                {radio.text}
-                            </label>
-                        ))}
+                    {fieldGroups.map(group => (<InputFieldGroup 
+                        groupClass={group.groupClass}
+                        fields={group.fields} 
+                        blurFunction={this.handleBlur} 
+                        changeFunction={fieldChangeFunction} 
+                    />))}
+                    <div className="shipping-method-area">
+                        <div className="bold-text">Shipping Method</div>
+                        <div className="radio-group">
+                            {radios.map(radio => (
+                                <label key={radio.id} htmlFor={radio.id}>
+                                    <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
+                                    <div className="radio-group-option-content shipping-option">
+                                        <div>
+                                            <div className="bold-text">{radio.title}</div>
+                                            <div>{radio.description}</div>
+                                        </div>
+                                        <div className="bold-text">{radio.priceText}</div>
+                                    </div>
+                                </label>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div>

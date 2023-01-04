@@ -8,6 +8,7 @@ class InputField extends React.Component {
                 labelText,
                 name,
                 id,
+                rowClass,
                 type,
                 options,
                 min,
@@ -20,7 +21,7 @@ class InputField extends React.Component {
         const idToUse = id ? id : name;
         const valueToUse = value || "";
         return (
-            <div className="input-row">
+            <div className={`input-row ${rowClass ? rowClass : ""}`}>
                 <label htmlFor={id ? id : name}>{labelText}</label>
                 <div className="input-container">
                     {type !== "select" &&

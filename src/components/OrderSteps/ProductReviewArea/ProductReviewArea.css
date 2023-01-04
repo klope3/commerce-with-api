@@ -1,5 +1,6 @@
 .product-review-area {
     width: 250px;
-    height: 300px;
+    min-height: 190px;
+    max-height: 300px;
     overflow-y: scroll;
 }
