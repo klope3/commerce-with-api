@@ -1,4 +1,4 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { calculateCartTotal } from "../../../utility";
@@ -37,7 +37,12 @@ class Cart extends React.Component {
                 </div>
                 <div>
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="shipping" className="button-major" onClick={navFunction} disabled={emptyCart}>Go To Shipping</button>
+                    <button 
+                        name="shipping" 
+                        className="button-major button-big" 
+                        onClick={navFunction} disabled={emptyCart}>
+                            Go To Shipping  <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
                 </div>
             </div>
         )

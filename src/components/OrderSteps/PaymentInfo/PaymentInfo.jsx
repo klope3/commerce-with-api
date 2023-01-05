@@ -1,11 +1,12 @@
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { fieldNames } from "../../../constants";
-import { blurComponentField, numberArray, validateAllComponentFieldValues } from "../../../utility";
+import { creditCardLogos, fieldNames } from "../../../constants";
+import { blurComponentField, getCardType, numberArray, validateAllComponentFieldValues } from "../../../utility";
 import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
+import "./PaymentInfo.css";
 
 class PaymentInfo extends React.Component {
     constructor(props) {
@@ -52,6 +53,8 @@ class PaymentInfo extends React.Component {
                 paymentCardSecurityCode: securityCodeError,
             }
         } = this.state;
+        const cardType = getCardType(paymentCardNumber);
+        const cardLogo = cardType ? creditCardLogos[cardType] : undefined;
         const fieldGroups = [
             {
                 fields: [
@@ -66,6 +69,7 @@ class PaymentInfo extends React.Component {
                         labelText: "Card Number",
                         value: paymentCardNumber,
                         errorText: cardNumberError,
+                        extraContent: <>{cardLogo && <img src={cardLogo} className="card-logo" />}</>
                     },
                 ],
             },
@@ -120,12 +124,22 @@ class PaymentInfo extends React.Component {
                             changeFunction={fieldChangeFunction} 
                         />)
                     )}
+                    <div>
+                        <button name="shipping" className="button-major" id="back-to-shipping" onClick={navFunction}>
+                            <FontAwesomeIcon icon={faArrowLeft} />  Back To Shipping
+                        </button>
+                        <button 
+                            name="confirm" 
+                            className="button-major button-big" 
+                            id="pay-now"
+                            onClick={() => this.clickConfirmOrder(fieldValues)}>
+                                Pay Now
+                        </button>
+                    </div>
                 </div>
                 <div>
                     <ProductReviewArea appStateInfo={appStateInfo} />
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="shipping" className="button-major" onClick={navFunction}>Back To Shipping</button>
-                    <button name="confirm" className="button-major" onClick={() => this.clickConfirmOrder(fieldValues)}>Pay Now</button>
                 </div>
             </div>
         )

@@ -82,6 +82,10 @@ button {
     cursor: pointer;
 }
 
+button svg {
+    pointer-events: none;
+}
+
 button:hover {
     color: var(--color-epsilon-hover);
     border-color: var(--color-epsilon-hover);
@@ -121,6 +125,10 @@ button:hover {
 
 .button-small {
     padding: 5px 10px;
+}
+
+.button-big {
+    padding: var(--padding-gamma);
 }
 
 .link-button {

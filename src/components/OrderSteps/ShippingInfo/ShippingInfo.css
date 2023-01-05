@@ -2,7 +2,7 @@
     border: 1px solid gray;
     padding: var(--padding-beta);
     border-radius: 10px;
-    margin-bottom: var(--padding-epsilon);
+    margin-bottom: var(--padding-alpha);
     display: flex;
     flex-direction: column;
     gap: var(--padding-beta);
@@ -12,4 +12,16 @@
     display: flex;
     align-items: center;
     gap: var(--padding-alpha);
+}
+
+#back-to-cart {
+    position: absolute;
+    left: -140px;
+    bottom: 10px;
+}
+
+#go-to-payment {
+    position: absolute;
+    right: -180px;
+    bottom: 10px;
 }

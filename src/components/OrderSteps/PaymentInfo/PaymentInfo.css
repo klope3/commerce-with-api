@@ -1,0 +1,19 @@
+#back-to-shipping {
+    position: absolute;
+    bottom: 10px;
+    left: -180px;
+}
+
+#pay-now {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: var(--size-16);
+}
+
+.card-logo {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    translate: 0 -50%;
+    width: 30px;
+}

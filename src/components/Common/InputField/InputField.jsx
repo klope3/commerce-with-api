@@ -14,6 +14,7 @@ class InputField extends React.Component {
                 min,
                 value,
                 errorText,
+                extraContent,
             },
             changeFunction,
             blurFunction,
@@ -40,6 +41,7 @@ class InputField extends React.Component {
                             {["", ...options].map(item => <option key={item}>{item}</option>)}
                         </select>
                     }
+                    {extraContent}
                 </div>
                 {errorText && <span className="error-text">{errorText}</span>}
             </div>

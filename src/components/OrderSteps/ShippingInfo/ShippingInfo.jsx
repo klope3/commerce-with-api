@@ -1,4 +1,4 @@
-import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { brandName, countries, expressShippingPrice, fieldNames, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
@@ -167,27 +167,17 @@ class ShippingInfo extends React.Component {
                             groupName="shippingMethod"
                             fieldChangeFunction={fieldChangeFunction}
                         />
-                        {/* <div className="radio-group">
-                            {radios.map(radio => (
-                                <label key={radio.id} htmlFor={radio.id}>
-                                    <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
-                                    <div className="radio-group-option-content shipping-option">
-                                        <div>
-                                            <div className="bold-text">{radio.title}</div>
-                                            <div>{radio.description}</div>
-                                        </div>
-                                        <div className="bold-text">{radio.priceText}</div>
-                                    </div>
-                                </label>
-                            ))}
-                        </div> */}
+                    </div>
+                    <div>
+                        <button name="cart" className="button-major" id="back-to-cart" onClick={navFunction}>
+                            <FontAwesomeIcon icon={faArrowLeft} />  Back To Cart
+                        </button>
+                        <button name="payment" className="button-major button-big" id="go-to-payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment  <FontAwesomeIcon icon={faArrowRight} /></button>
                     </div>
                 </div>
                 <div>
                     <ProductReviewArea appStateInfo={appStateInfo} />
                     <PriceBreakdown cart={cart} products={products} shippingMethod={shippingMethod} />
-                    <button name="cart" className="button-major" onClick={navFunction}>Back To Cart</button>
-                    <button name="payment" className="button-major" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment</button>
                 </div>
             </div>
         )

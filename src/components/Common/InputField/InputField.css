@@ -8,6 +8,7 @@
 
 .input-row .input-container {
     border-radius: 4px;
+    position: relative;
 }
 
 .input-row .input-container input,
