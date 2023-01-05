@@ -16,6 +16,7 @@
     top: 50px;
     padding: var(--padding-gamma);
     overflow-y: scroll;
+    border-radius: 10px;
 }
 
 .product-modal img {
@@ -64,4 +65,16 @@
 
 .product-info-block {
     margin: var(--padding-beta) 0;
+}
+
+.product-modal-price-flex {
+    display: flex;
+    align-items: center;
+    margin-top: var(--padding-gamma);
+    gap: var(--padding-beta);
+}
+
+.product-modal-price {
+    font-weight: bold;
+    font-size: var(--size-24);
 }

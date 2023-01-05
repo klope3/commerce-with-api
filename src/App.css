@@ -29,6 +29,7 @@
 * {
     color: var(--text-base);
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 header,
@@ -170,4 +171,15 @@ button:hover {
 
 .radio-group input:checked ~ .radio-group-option-content {
     background-color: var(--gray-lighter);
+}
+
+.small-field-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--padding-beta);
+}
+
+.small-field-flex .input-row {
+    margin: 0;
+    flex: 1;
 }

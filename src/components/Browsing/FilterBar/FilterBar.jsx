@@ -3,6 +3,7 @@ import CheckBox from "../../Common/CheckBox/CheckBox";
 import DateRangeGroup from "../../Common/InputGroups/DateRangeGroup/DateRangeGroup";
 import MultiSelectGroup from "../../Common/InputGroups/MultiSelectGroup/MultiSelectGroup";
 import NumberRangeGroup from "../../Common/InputGroups/NumberRangeGroup/NumberRangeGroup";
+import RangeGroup from "../../Common/InputGroups/RangeGroup/RangeGroup";
 import StyledToggle from "../../Common/StyledToggle/StyledToggle";
 import "./FilterBar.css";
 
@@ -22,9 +23,10 @@ class FilterBar extends React.Component {
                 );
             case "number":
                 return (
-                    <NumberRangeGroup 
+                    <RangeGroup 
                         key={attribute.name}
                         headingText={attribute.name} 
+                        type="number"
                         idPrefix={attribute.name} 
                         dataTag={attribute.name}
                         changeFunction={changeFunction} 
@@ -32,9 +34,10 @@ class FilterBar extends React.Component {
                 );
             case "date":
                 return (
-                    <DateRangeGroup 
+                    <RangeGroup 
                         key={attribute.name}
                         headingText={attribute.name} 
+                        type="date"
                         idPrefix={attribute.name} 
                         dataTag={attribute.name}
                         changeFunction={changeFunction} 
@@ -60,7 +63,7 @@ class FilterBar extends React.Component {
         return (
             <div className="filter-bar">
                 {productAttributes.data && productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
-                <NumberRangeGroup headingText="Price" dataTag="price" changeFunction={changeFilterFunction} />
+                <RangeGroup headingText="Price" symbolBeforeField="$" type="number" dataTag="price" changeFunction={changeFilterFunction} />
                 {productCategories.data && <MultiSelectGroup headingText="Category" dataTag="category" options={productCategories.data.map(item => item.name)} changeFunction={changeFilterFunction} />}
             </div>
         )

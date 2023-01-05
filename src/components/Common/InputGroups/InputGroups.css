@@ -1,0 +1,13 @@
+.range-field-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.range-field-row input {
+    display: block;
+}
+
+.range-field-label {
+    flex: 1;
+}

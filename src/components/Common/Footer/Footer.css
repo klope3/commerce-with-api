@@ -17,12 +17,6 @@ footer .link-button {
     margin-bottom: 15px;
 }
 
-.logo {
-    font-size: var(--size-30);
-    font-weight: bold;
-}
-
-.logo,
 .footer-heading,
 .copyright {
     color: var(--text-light);

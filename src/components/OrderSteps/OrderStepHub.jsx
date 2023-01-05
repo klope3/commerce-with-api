@@ -5,6 +5,7 @@ import PaymentInfo from "./PaymentInfo/PaymentInfo";
 import OrderConfirmation from "./OrderConfirmation/OrderConfirmation";
 import { formattingFunctions } from "../../formatters";
 import "./OrderHub.css";
+import HomePortal from "../Common/HomePortal/HomePortal";
 
 class OrderStepHub extends React.Component {
     constructor() {
@@ -66,7 +67,8 @@ class OrderStepHub extends React.Component {
         } = this.state;
         return (
             <div className="order-hub">
-                <button name="browsing" onClick={navigateFunction}>Back To Home</button>
+                <HomePortal navFunction={navigateFunction} buttonName="browsing" id="order-step-home-portal" />
+                {/* <button name="browsing" onClick={navigateFunction}>Back To Home</button> */}
                 {page === "cart" && 
                     <Cart 
                         appStateInfo={appStateInfo} 

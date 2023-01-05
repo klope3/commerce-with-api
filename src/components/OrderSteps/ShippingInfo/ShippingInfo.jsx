@@ -1,7 +1,8 @@
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { brandName, countries, expressShippingPrice, fieldNames, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
-import InputField from "../../Common/InputField/InputField";
 import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
@@ -56,12 +57,6 @@ class ShippingInfo extends React.Component {
                 shippingZip: zipError,
             }
         } = this.state;
-        const fields1 = [
-        ];
-        const fields2 = [
-        ];
-        const fields3 = [
-        ];
         const fieldGroups = [
             {
                 fields: [
@@ -145,14 +140,18 @@ class ShippingInfo extends React.Component {
             <div className="order-step-flex">
                 <div>
                     <div className="order-step-heading">Shipping</div>
+                    <div className="order-step-icon"><FontAwesomeIcon icon={faTruck} /></div>
                 </div>
                 <div className="order-step-input-area">
-                    {fieldGroups.map(group => (<InputFieldGroup 
-                        groupClass={group.groupClass}
-                        fields={group.fields} 
-                        blurFunction={this.handleBlur} 
-                        changeFunction={fieldChangeFunction} 
-                    />))}
+                    {fieldGroups.map(group => (
+                        <InputFieldGroup 
+                            key={group.fields[0].labelText}
+                            groupClass={group.groupClass}
+                            fields={group.fields} 
+                            blurFunction={this.handleBlur} 
+                            changeFunction={fieldChangeFunction} 
+                        />)
+                    )}
                     <div className="shipping-method-area">
                         <div className="bold-text">Shipping Method</div>
                         <div className="radio-group">

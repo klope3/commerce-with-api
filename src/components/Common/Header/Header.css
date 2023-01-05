@@ -8,10 +8,21 @@ h1,
     justify-content: space-between;
     padding-top: 7px;
     position: relative;
+    align-items: center;
+    padding-bottom: 14px;
 }
 
 .account-greeting {
     position: absolute;
     right: 0;
     bottom: 0;
+}
+
+.header-button-flex {
+    display: flex;
+    gap: var(--padding-alpha);
+}
+
+.header-button-flex button {
+    display: block;
 }

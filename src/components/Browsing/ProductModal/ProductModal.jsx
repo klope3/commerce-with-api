@@ -53,8 +53,10 @@ class ProductModal extends React.Component {
                         <div className="product-info-alpha">
                             <h2>{name}</h2>
                             <div>{description.replace(/(<p>|<\/p>)/g, "")}</div>
-                            <div>{price}</div>
-                            <ProductCartControls name={name} changeItemQuantityFunction={changeItemQuantityFunction} quantityInCart={quantityInCart} />
+                            <div className="product-modal-price-flex">
+                                <ProductCartControls name={name} changeItemQuantityFunction={changeItemQuantityFunction} quantityInCart={quantityInCart} />
+                                <div className="product-modal-price">{price}</div>
+                            </div>
                         </div>
                         <div className="product-info-beta">
                             {info.map(info => <div key={info.heading} className="product-info-block"><div className="product-info-heading">{info.heading}</div><div className={`${info.extraClass} product-info-value`}>{info.value}</div></div>)}

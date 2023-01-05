@@ -14,7 +14,7 @@ class MainPage extends React.Component {
         } = this.props;
         return (
             <div className="main-page">
-                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} />
+                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
                 <div className="main-bg"></div>
                 <div className="container-hero">
                     <h2>{mainPageHookText}</h2>

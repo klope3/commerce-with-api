@@ -36,7 +36,7 @@ class InputField extends React.Component {
                         />
                     }
                     {type === "select" &&
-                        <select name={name} id={idToUse} onChange={changeFunction} onBlur={blurFunction}>
+                        <select name={name} id={idToUse} value={valueToUse} onChange={changeFunction} onBlur={blurFunction}>
                             {["", ...options].map(item => <option key={item}>{item}</option>)}
                         </select>
                     }

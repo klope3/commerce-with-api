@@ -161,7 +161,6 @@ class AppHub extends React.Component {
         let valToSet = value;
         if (sender === "addToCartButton") valToSet = 1;
         if (sender === "removeFromCartButton") valToSet = 0;
-        console.log("sender " + sender + ", value to set " + valToSet + ", productName " + productName);
         this.setState(prevState => ({
             ...prevState,
             cart: {

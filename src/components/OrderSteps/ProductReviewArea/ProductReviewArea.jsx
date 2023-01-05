@@ -13,11 +13,11 @@ class ProductReviewArea extends React.Component {
         return (
             <div className="product-review-area">
                 {Object.keys(cart).map(cartKey => (
-                    <>{cart[cartKey] > 0 && <ProductReviewRow 
+                    cart[cartKey] > 0 && <ProductReviewRow 
                         key={cartKey}
                         product={products.find(product => product.name === cartKey)} 
                         quantity={cart[cartKey]} 
-                    />}</>
+                    />
                 ))}
             </div>
         )

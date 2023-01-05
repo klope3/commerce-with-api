@@ -1,6 +1,5 @@
 .order-hub .input-row .input-container {
     border: 1px solid gray;
-    padding: var(--padding-beta);
 }
 
 .order-hub {
@@ -23,4 +22,22 @@
     width: 420px;
     border-left: 1px solid gray;
     padding-left: var(--padding-gamma);
+}
+
+.order-step-icon {
+    font-size: 50px;
+    text-align: right;
+    margin-top: var(--padding-beta);
+}
+
+.order-step-icon path {
+    color: var(--gray-mid);
+}
+
+#order-step-home-portal {
+    color: var(--color-alpha);
+}
+
+#order-step-home-portal:hover {
+    color: var(--color-gamma);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { brandName } from "../../../constants";
+import HomePortal from "../HomePortal/HomePortal";
 import "./Header.css";
 
 class Header extends React.Component {
@@ -18,12 +18,9 @@ class Header extends React.Component {
         return (
             <header>
                 <div className={`${spreadContent ? "" : "container-main"} header-flex`}>
-                    <div>
-                        <h1>{brandName}</h1>
-                    </div>
-                    <div>
+                    <HomePortal navFunction={navigateBrowsingFunction} />
+                    <div className="header-button-flex">
                         <button name="order" onClick={navigateAppFunction}>{`Cart (${cartItemCount})`}</button>
-                        <button name="main" onClick={navigateBrowsingFunction}>Back To Home</button>
                         {!activeAccount && <button name="account" className="button-major" onClick={navigateAppFunction}>Sign In</button>}
                         {activeAccount && <button onClick={signOutFunction}>Sign Out</button>}
                         <span className="account-greeting">Welcome, {activeAccount ? activeAccount.firstName : "Guest"}!</span>

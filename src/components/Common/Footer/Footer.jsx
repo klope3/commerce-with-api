@@ -1,5 +1,6 @@
 import React from "react";
 import { brandName } from "../../../constants";
+import HomePortal from "../HomePortal/HomePortal";
 import "./Footer.css";
 
 class Footer extends React.Component {
@@ -35,7 +36,7 @@ class Footer extends React.Component {
             <footer>
                 <div className={`${this.props.spreadContent ? "" : "container-main"}`}>
                     <div className="footer-flex">
-                        <div className="logo">Vee3D</div>
+                        <HomePortal />
                         {categories.map(category => (
                             <div key={category.heading}>
                                 <div className="footer-heading">{category.heading}</div>

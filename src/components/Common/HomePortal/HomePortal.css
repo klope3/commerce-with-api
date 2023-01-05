@@ -1,0 +1,8 @@
+.home-portal {
+    display: block;
+    font-size: var(--size-30);
+    color: var(--color-epsilon);
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}

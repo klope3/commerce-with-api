@@ -8,15 +8,17 @@
 
 .input-row .input-container {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: var(--padding-beta);
+    border-radius: 4px;
 }
 
-.input-row .input-container input {
+.input-row .input-container input,
+.input-row .input-container select {
     width: 100%;
     background-color: transparent;
     border: none;
+    padding: var(--padding-beta);
 }
 
-.input-row .input-container input:focus-visible {
-    outline: none;
+.input-row.small-field .input-container {
+    width: 150px;
 }
