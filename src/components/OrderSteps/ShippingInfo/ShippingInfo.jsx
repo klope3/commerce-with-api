@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { brandName, countries, expressShippingPrice, fieldNames, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
+import RadioGroup from "../../Common/RadioGroup/RadioGroup";
 import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
 import ProductReviewArea from "../ProductReviewArea/ProductReviewArea";
+import ShippingMethodRadioContent from "../ShippingMethodRadioContent/ShippingMethodRadioContent";
 import "./ShippingInfo.css";
 
 class ShippingInfo extends React.Component {
@@ -124,16 +126,22 @@ class ShippingInfo extends React.Component {
             {
                 id: "standard",
                 checked: shippingMethod === "standard",
-                title: "Standard",
-                description: shippingStandardDescription,
-                priceText: "FREE",
+                contentContainerClass: "shipping-option",
+                content: <ShippingMethodRadioContent 
+                    title="Standard" 
+                    description={shippingStandardDescription} 
+                    priceText="FREE"
+                />,
             },
             {
                 id: "express",
                 checked: shippingMethod === "express",
-                title: "Express",
-                description: shippingExpressDescription,
-                priceText: `$${expressShippingPrice.toFixed(2)}`,
+                contentContainerClass: "shipping-option",
+                content: <ShippingMethodRadioContent 
+                    title="Express" 
+                    description={shippingExpressDescription} 
+                    priceText={`$${expressShippingPrice.toFixed(2)}`}
+                />,
             },
         ]
         return (
@@ -154,7 +162,12 @@ class ShippingInfo extends React.Component {
                     )}
                     <div className="shipping-method-area">
                         <div className="bold-text">Shipping Method</div>
-                        <div className="radio-group">
+                        <RadioGroup
+                            radios={radios}
+                            groupName="shippingMethod"
+                            fieldChangeFunction={fieldChangeFunction}
+                        />
+                        {/* <div className="radio-group">
                             {radios.map(radio => (
                                 <label key={radio.id} htmlFor={radio.id}>
                                     <input type="radio" name="shippingMethod" id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
@@ -167,7 +180,7 @@ class ShippingInfo extends React.Component {
                                     </div>
                                 </label>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div>

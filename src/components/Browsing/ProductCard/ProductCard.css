@@ -57,6 +57,11 @@
     pointer-events: initial;
 }
 
+.product-card input {
+    padding: var(--padding-beta);
+    width: 80px;
+}
+
 .product-card:hover .product-card-overlay,
 .product-card:hover .product-card-input-container {
     opacity: 100%;

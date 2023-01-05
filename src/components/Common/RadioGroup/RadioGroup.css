@@ -1,0 +1,32 @@
+.radio-group {
+    background-color: var(--gray-mid);
+    display: grid;
+    border-radius: 5px;
+    padding: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--padding-alpha);
+}
+
+.radio-group label {
+    display: block;
+    cursor: pointer;
+}
+
+.radio-group label:hover .radio-group-option-content {
+    background-color: var(--gray-light);
+}
+
+.radio-group label .radio-group-option-content {
+    padding: 10px;
+    transition: 0.2s;
+    border-radius: 5px;
+}
+
+.radio-group input {
+    opacity: 0;
+    position: absolute;
+}
+
+.radio-group input:checked ~ .radio-group-option-content {
+    background-color: var(--gray-lighter);
+}

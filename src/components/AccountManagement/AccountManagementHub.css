@@ -36,6 +36,27 @@
     border-radius: 30px;
 }
 
+.account-input-area .input-container {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .account-hub button {
     margin: var(--padding-beta) 0;
+}
+
+#account-page-select {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+#account-page-select .radio-group-option-content {
+    color: var(--gray-light);
+}
+
+#account-page-select.radio-group input:checked ~ .radio-group-option-content {
+    background-color: rgb(94, 94, 94);
+}
+
+#account-page-select.radio-group label:hover .radio-group-option-content {
+    background-color: rgb(66, 66, 66);
 }

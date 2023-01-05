@@ -119,10 +119,11 @@ class CreateAccount extends React.Component {
                 errorText: lastNameError,
             },
         ];
+        const success = attemptMessage && attemptMessage.toLowerCase().includes("success");
         return (
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.blurField} changeFunction={this.changeField} />)}
-                {attemptMessage && <div className="error-text">{attemptMessage}</div>}
+                {attemptMessage && <div className={success ? "success-text" : "error-text"}>{attemptMessage}</div>}
                 <button className="button-major" onClick={this.clickCreateAccount}>Create Account</button>
             </div>
         )
