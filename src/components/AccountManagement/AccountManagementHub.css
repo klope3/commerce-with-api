@@ -60,3 +60,21 @@
 #account-page-select.radio-group label:hover .radio-group-option-content {
     background-color: rgb(66, 66, 66);
 }
+
+.password-row .input-container {
+    display: flex;
+}
+
+.password-row .input-container button {
+    margin: 0;
+    padding: 0 var(--padding-beta);
+    border: none;
+}
+
+.password-row .input-container button path {
+    color: var(--gray-mid);
+}
+
+.password-row input:focus-visible {
+    outline: none;
+}

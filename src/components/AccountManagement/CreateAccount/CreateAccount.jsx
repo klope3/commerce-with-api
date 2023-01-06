@@ -1,3 +1,5 @@
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { fieldNames } from "../../../constants"; //should probably stop using this
 import { changeComponentField } from "../../../utility";
@@ -8,6 +10,7 @@ class CreateAccount extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            passwordVisible: false,
             errors: {},
         };
         this.tryCreateAccount = props.createAccountFunction;
@@ -71,6 +74,12 @@ class CreateAccount extends React.Component {
         }));
     }
 
+    togglePasswordVisibility = () => {
+        this.setState(prevState => ({
+            passwordVisible: !prevState.passwordVisible,
+        }));
+    }
+
     render() {
         const {
             createAccountEmail,
@@ -97,14 +106,21 @@ class CreateAccount extends React.Component {
             {
                 name: fieldNames.createAccountPassword,
                 labelText: "Password",
+                type: this.state.passwordVisible ? "text" : "password",
                 value: createAccountPassword,
                 errorText: passwordError,
+                rowClass: "password-row",
+                extraContent: <button className="password-visibility-button" onClick={this.togglePasswordVisibility}>
+                    <FontAwesomeIcon icon={this.state.passwordVisible ? faEye : faEyeSlash} />
+                </button>
             },
             {
                 name: fieldNames.createAccountPasswordConfirm,
                 labelText: "Confirm Password",
+                type: this.state.passwordVisible ? "text" : "password",
                 value: createAccountPasswordConfirm,
                 errorText: passwordConfirmError,
+                rowClass: "password-row",
             },
             {
                 name: fieldNames.createAccountFirstName,
