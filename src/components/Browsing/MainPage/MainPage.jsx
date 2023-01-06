@@ -15,11 +15,13 @@ class MainPage extends React.Component {
         return (
             <div className="main-page">
                 <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
-                <div className="main-bg"></div>
-                <div className="container-hero">
-                    <h2>{mainPageHookText}</h2>
-                    <div>
-                        <button name="browsing" className="button-major" onClick={navigateBrowsingFunction}>{mainPageGoButtonText}</button>
+                <div className="main-page-center">
+                    <div className="main-bg"></div>
+                    <div className="container-hero">
+                        <h2>{mainPageHookText}</h2>
+                        <div>
+                            <button name="browsing" className="button-major" onClick={navigateBrowsingFunction}>{mainPageGoButtonText}</button>
+                        </div>
                     </div>
                 </div>
                 <Footer />
