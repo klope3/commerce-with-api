@@ -162,3 +162,17 @@ button:hover {
     margin: 0;
     flex: 1;
 }
+
+.max-768 {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .max-768 {
+        display: initial;
+    }
+
+    .min-768 {
+        display: none;
+    }
+}

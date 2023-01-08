@@ -29,8 +29,9 @@
     right: 0;
     height: 100%;
     z-index: -1;
+    background-size: 1625px;
     background-position-x: center;
-    background-position-y: -114px;
+    background-position-y: -206px;
     background-image: url("https://images.pexels.com/photos/8347501/pexels-photo-8347501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
 

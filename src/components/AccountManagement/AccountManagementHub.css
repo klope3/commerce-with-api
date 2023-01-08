@@ -78,3 +78,30 @@
 .password-row input:focus-visible {
     outline: none;
 }
+
+@media screen and (max-width: 768px) {
+    .account-input-area {
+        width: 100%;
+        padding-left: var(--padding-beta);
+        padding-right: var(--padding-beta);
+    }
+
+    .account-hub-center {
+        max-width: initial;
+        flex-direction: column;
+    }
+
+    .account-hub-center .logo {
+        position: initial;
+    }
+
+    .account-hub button {
+        display: block;
+    }
+
+    #sign-in-button,
+    #create-account-button {
+        display: block;
+        margin: auto;
+    }
+}

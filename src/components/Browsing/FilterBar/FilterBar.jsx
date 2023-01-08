@@ -1,3 +1,5 @@
+import { faListCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import CheckBox from "../../Common/CheckBox/CheckBox";
 import DateRangeGroup from "../../Common/InputGroups/DateRangeGroup/DateRangeGroup";
@@ -8,6 +10,11 @@ import StyledToggle from "../../Common/StyledToggle/StyledToggle";
 import "./FilterBar.css";
 
 class FilterBar extends React.Component {
+    constructor() {
+        super();
+        this.state = { expanded: false };
+    }
+
     chooseComponentForAttribute = (attribute, changeFunction) => {
         switch (attribute.type) {
             case "options":
@@ -58,14 +65,22 @@ class FilterBar extends React.Component {
         }
     }
 
+    toggleExpanded = () => this.setState(prevState => ({expanded: !prevState.expanded}));
+
     render() {
         const { productAttributes, productCategories, changeFilterFunction } = this.props;
         return (
-            <div className="filter-bar">
-                {productAttributes.data && productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
-                <RangeGroup headingText="Price" symbolBeforeField="$" type="number" dataTag="price" changeFunction={changeFilterFunction} />
-                {productCategories.data && <MultiSelectGroup headingText="Category" dataTag="category" options={productCategories.data.map(item => item.name)} changeFunction={changeFilterFunction} />}
-            </div>
+            <>
+                {this.state.expanded && <div className="filter-bar-blocker"></div>}
+                <div className="filter-bar" style={{left: this.state.expanded ? 0 : undefined}}>
+                    <div className="filter-bar-scrollable">
+                        {productAttributes.data && productAttributes.data.map(item => this.chooseComponentForAttribute(item, changeFilterFunction))}
+                        <RangeGroup headingText="Price" symbolBeforeField="$" type="number" dataTag="price" changeFunction={changeFilterFunction} />
+                        {productCategories.data && <MultiSelectGroup headingText="Category" dataTag="category" options={productCategories.data.map(item => item.name)} changeFunction={changeFilterFunction} />}
+                    </div>
+                    <button className="filter-bar-button" onClick={this.toggleExpanded}><FontAwesomeIcon icon={this.state.expanded ? faXmark : faListCheck} /></button>
+                </div>
+            </>
         )
     }
 }

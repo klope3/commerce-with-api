@@ -25,3 +25,14 @@
     right: -180px;
     bottom: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    #back-to-cart {
+        position: initial;
+        margin-right: var(--padding-alpha);
+    }
+
+    #go-to-payment {
+        position: initial;
+    }
+}

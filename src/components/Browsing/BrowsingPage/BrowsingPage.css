@@ -1,3 +1,4 @@
 .filter-list-container {
     display: flex;
+    position: relative;
 }

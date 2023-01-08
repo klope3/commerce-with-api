@@ -21,7 +21,10 @@ class CartItemRow extends React.Component {
                     </div>
                     <div className="bold-text">{product.price.formatted_with_symbol}</div>
                     <div className="cart-item-quantity"><input type="number" name="" id="" value={quantity} min="1" onChange={changeItemQuantityFunction} data-product-name={product.name}/></div>
-                    <button className="button-remove" name="removeFromCartButton" data-product-name={product.name} onClick={changeItemQuantityFunction}><FontAwesomeIcon icon={faXmark} /></button>
+                    <button className="button-remove" name="removeFromCartButton" data-product-name={product.name} onClick={changeItemQuantityFunction}>
+                        <FontAwesomeIcon className="min-768" icon={faXmark} />
+                        <span className="max-768" style={{pointerEvents: "none"}}>Remove</span>
+                    </button>
                 </div>
             </div>
         )

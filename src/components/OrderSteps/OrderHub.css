@@ -11,15 +11,18 @@
     display: flex;
     justify-content: center;
     gap: var(--padding-epsilon);
+    padding: 0 var(--padding-beta);
 }
 
 .order-step-heading {
     font-size: var(--size-30);
     margin-top: 50px;
+    text-align: right;
 }
 
 .order-step-input-area {
-    width: 420px;
+    min-width: 290px;
+    max-width: 420px;
     border-left: 1px solid gray;
     padding-left: var(--padding-gamma);
     position: relative;
@@ -41,4 +44,18 @@
 
 #order-step-home-portal:hover {
     color: var(--color-gamma);
+}
+
+@media screen and (max-width: 768px) {
+    .order-step-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .order-step-input-area {
+        border-left: none;
+        padding-left: 0;
+        min-width: initial;
+        width: 100%;
+    }
 }

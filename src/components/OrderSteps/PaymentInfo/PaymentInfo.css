@@ -1,7 +1,7 @@
 #back-to-shipping {
     position: absolute;
     bottom: 10px;
-    left: -180px;
+    left: -170px;
 }
 
 #pay-now {
@@ -16,4 +16,12 @@
     top: 50%;
     translate: 0 -50%;
     width: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    #back-to-shipping {
+        position: initial;
+        margin-bottom: var(--padding-alpha);
+        margin-right: var(--padding-alpha);
+    }
 }

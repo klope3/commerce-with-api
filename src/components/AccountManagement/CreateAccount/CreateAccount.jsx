@@ -140,7 +140,7 @@ class CreateAccount extends React.Component {
             <div>
                 {fields.map(item => <InputField key={item.name} fieldData={item} blurFunction={this.blurField} changeFunction={this.changeField} />)}
                 {attemptMessage && <div className={success ? "success-text" : "error-text"}>{attemptMessage}</div>}
-                <button className="button-major" onClick={this.clickCreateAccount}>Create Account</button>
+                <button className="button-major" id="create-account-button" onClick={this.clickCreateAccount}>Create Account</button>
             </div>
         )
     }

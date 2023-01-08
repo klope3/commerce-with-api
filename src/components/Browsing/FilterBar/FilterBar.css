@@ -1,4 +1,49 @@
 .filter-bar {
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.filter-bar-button {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    translate: 100% 0;
+    border: none;
+    background-color: white;
+}
+
+.filter-bar-scrollable {
+    position: relative;
     width: 215px;
     padding: var(--padding-alpha);
+    background-color: white;
+}
+
+.filter-bar-blocker {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+@media screen and (max-width: 768px) {
+    .filter-bar {
+        position: fixed;
+        left: -215px;
+        top: 0;
+        height: 100%;
+    }
+
+    .filter-bar-button {
+        display: initial;
+    }
+
+    .filter-bar-scrollable {
+        overflow-y: scroll;
+        height: 100%;
+    }
 }
