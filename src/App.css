@@ -167,6 +167,12 @@ button:hover {
     display: none;
 }
 
+.logo {
+    font-size: var(--size-30);
+    font-weight: bold;
+    color: var(--color-epsilon);
+}
+
 @media screen and (max-width: 768px) {
     .max-768 {
         display: initial;

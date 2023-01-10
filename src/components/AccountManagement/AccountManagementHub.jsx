@@ -18,15 +18,6 @@ class AccountManagementHub extends React.Component {
         }));
     }
 
-    // radioOption = (text, value, checked) => {
-    //     return (
-    //         <label>
-    //             <input type="radio" name="pageSelect" id="signIn" value={value} onChange={this.handleRadio} checked={checked} />
-    //             {text}
-    //         </label>
-    //     )
-    // }
-
     render() {
         const { navigateFunction, createAccountFunction, signInFunction } = this.props;
         const { page } = this.state;
@@ -48,10 +39,6 @@ class AccountManagementHub extends React.Component {
                     <div className="logo">{brandName}</div>
                     <div className="account-input-area">
                         <button onClick={navigateFunction} name="browsing">{"< Home"}</button>
-                        {/* <div>
-                            {this.radioOption("Sign In", "signIn", page === "signIn")}
-                            {this.radioOption("Create Account", "createAccount", page === "createAccount")}
-                        </div> */}
                         <RadioGroup groupName="pageSelect" id="account-page-select" radios={radios} fieldChangeFunction={this.handleRadio} />
                         {page === "signIn" && <SignIn signInFunction={signInFunction} />}
                         {page === "createAccount" && <CreateAccount createAccountFunction={createAccountFunction} />}

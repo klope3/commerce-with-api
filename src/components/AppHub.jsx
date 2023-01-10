@@ -75,81 +75,81 @@ class AppHub extends React.Component {
         }))
     }
 
-    tryFetchProducts = async() => {
+    tryFetchFromStore = async(url, key, callbackOk, callbackNotOk, callbackWithError) => {
         try {
-            const response = await fetch("https://api.chec.io/v1/products?include=attributes&limit=100", {
-            method: "get",
-            headers: new Headers({
-                "X-Authorization": PUBLIC_KEY
-            }),
-        });
-        if (response.ok) {
-            const json = await response.json();
-            this.setState(prevState => ({
-                ...prevState, 
-                loading: false,
-                products: json.data,
-            }));
-        } else {
-            this.setState(prevState => ({
-                ...prevState,
-                errorMessage: `A ${response.status} error occurred.`,
-                loading: false,
-            }));
-        }
+            const response = await fetch(url, {
+                method: "get",
+                headers: new Headers({
+                    "X-Authorization": key
+                }),
+            });
+            if (response.ok) {
+                const json = await response.json();
+                callbackOk(json);
+            } else {
+                callbackNotOk(response);
+            }
         } catch(error) {
-            this.setState(prevState => ({
-                ...prevState,
-                errorMessage: "An error occurred. There might be a network issue.",
-                loading: false,
-            }));
+            callbackWithError(error);
         }
+    }
+
+    tryFetchProducts = async() => {
+        this.tryFetchFromStore(
+            "https://api.chec.io/v1/products?include=attributes&limit=100",
+            PUBLIC_KEY,
+            json => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    loading: false,
+                    products: json.data,
+                }));
+            },
+            response => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    errorMessage: `A ${response.status} error occurred.`,
+                    loading: false,
+                }));
+            },
+            error => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    errorMessage: "An error occurred. There might be a network issue.",
+                    loading: false,
+                }));
+            }
+        );
     }
 
     tryFetchCategories = async() => {
-        try {
-            const response = await fetch("https://api.chec.io/v1/categories", {
-            method: "get",
-            headers: new Headers({
-                "X-Authorization": SECRET_KEY
-            }),
-        });
-        if (response.ok) {
-            const json = await response.json();
-            this.setState(prevState => ({
-                ...prevState,
-                productCategories: json,
-            }));
-        }
-        else {
-            console.log(response);
-        }
-        } catch(error) {
-            console.log(error);
-        }
+        this.tryFetchFromStore(
+            "https://api.chec.io/v1/categories",
+            SECRET_KEY,
+            json => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    productCategories: json,
+                }));
+            },
+            response => {},
+            error => {}
+        );
     }
 
     tryFetchAttributes = async() => {
-        try {
-            const response = await fetch("https://api.chec.io/v1/attributes", {
-            method: "get",
-            headers: new Headers({
-                "X-Authorization": SECRET_KEY
-            }),
-        });
-        if (response.ok) {
-            const json = await response.json();
-            this.setState(prevState => ({
-                ...prevState,
-                productAttributes: json,
-            }));
-        }
-        else {
-            console.log(response);
-        }
-        } catch(error) {
-            console.log(error);
-        }
+        this.tryFetchFromStore(
+            "https://api.chec.io/v1/attributes",
+            SECRET_KEY,
+            json => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    productAttributes: json,
+                }));
+            },
+            response => {},
+            error => {},
+        );
     }
 
     changeCartItemQuantity = event => {
