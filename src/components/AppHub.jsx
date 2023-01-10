@@ -231,8 +231,6 @@ class AppHub extends React.Component {
                         changeItemQuantityFunction={this.changeCartItemQuantity} 
                     />
                 }
-                {/* {loading && <div>Loading...</div>}
-                {errorMessage && <div className="error-text">{errorMessage}</div>} */}
             </>
         )
     }

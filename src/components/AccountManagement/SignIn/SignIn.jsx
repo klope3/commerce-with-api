@@ -1,8 +1,6 @@
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { fieldNames } from "../../../constants";
-import { changeComponentField } from "../../../utility";
 import InputField from "../../Common/InputField/InputField";
 
 class SignIn extends React.Component {
@@ -12,7 +10,13 @@ class SignIn extends React.Component {
         this.signInFunction = props.signInFunction;
     }
 
-    changeField = event => changeComponentField(this, event);
+    changeField = event => {
+        const { name: sender, value } = event.target;
+        this.setState(prevState => ({
+            ...prevState,
+            [sender]: value,
+        }));
+    }
 
     clickSignIn = () => this.signInFunction(this.state.signInEmail, this.state.signInPassword, this.signInFailure);
 
@@ -34,21 +38,22 @@ class SignIn extends React.Component {
             signInEmail,
             signInPassword,
             failedAttempt,
+            passwordVisible,
         } = this.state;
         const fields = [
             {
-                name: fieldNames.signInEmail,
+                name: "signInEmail",
                 labelText: "Email Address",
                 value: signInEmail,
             },
             {
-                name: fieldNames.signInPassword,
-                type: this.state.passwordVisible ? "text" : "password",
+                name: "signInPassword",
+                type: passwordVisible ? "text" : "password",
                 labelText: "Password",
                 value: signInPassword,
                 rowClass: "password-row",
                 extraContent: <button className="password-visibility-button" onClick={this.togglePasswordVisibility}>
-                    <FontAwesomeIcon icon={this.state.passwordVisible ? faEye : faEyeSlash} />
+                    <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
                 </button>
             },
         ];

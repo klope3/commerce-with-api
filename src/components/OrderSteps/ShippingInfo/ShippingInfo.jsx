@@ -1,7 +1,7 @@
 import { faArrowLeft, faArrowRight, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { brandName, countries, expressShippingPrice, fieldNames, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
+import { countries, expressShippingPrice, shippingExpressDescription, shippingStandardDescription } from "../../../constants";
 import { blurComponentField, validateAllComponentFieldValues } from "../../../utility";
 import RadioGroup from "../../Common/RadioGroup/RadioGroup";
 import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
@@ -63,25 +63,25 @@ class ShippingInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.shippingTitle,
+                        name: "shippingTitle",
                         labelText: "Address Title",
                         value: shippingTitle,
                         errorText: titleError,
                     },
                     {
-                        name: fieldNames.shippingAddress,
+                        name: "shippingAddress",
                         labelText: "Address",
                         value: shippingAddress,
                         errorText: addressError,
                     },
                     {
-                        name: fieldNames.shippingFullName,
+                        name: "shippingFullName",
                         labelText: "Full Name",
                         value: shippingFullName,
                         errorText: nameError,
                     },
                     {
-                        name: fieldNames.shippingCity,
+                        name: "shippingCity",
                         labelText: "City",
                         value: shippingCity,
                         errorText: cityError,
@@ -91,16 +91,14 @@ class ShippingInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.shippingState,
+                        name: "shippingState",
                         labelText: "State",
-                        // rowClass: "small-field",
                         value: shippingState,
                         errorText: stateError,
                     },
                     {
-                        name: fieldNames.shippingZip,
+                        name: "shippingZip",
                         labelText: "Zip Code",
-                        // rowClass: "small-field",
                         type: "number",
                         min: "0",
                         value: shippingZip,
@@ -112,7 +110,7 @@ class ShippingInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.shippingCountry,
+                        name: "shippingCountry",
                         labelText: "Country",
                         type: "select",
                         options: countries,

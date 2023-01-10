@@ -1,7 +1,7 @@
 import { faArrowLeft, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { creditCardLogos, fieldNames } from "../../../constants";
+import { creditCardLogos } from "../../../constants";
 import { blurComponentField, getCardType, numberArray, validateAllComponentFieldValues } from "../../../utility";
 import InputFieldGroup from "../InputFieldGroup/InputFieldGroup";
 import PriceBreakdown from "../PriceBreakdown/PriceBreakdown";
@@ -59,13 +59,13 @@ class PaymentInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.paymentCardholder,
+                        name: "paymentCardholder",
                         labelText: "Cardholder",
                         value: paymentCardholder,
                         errorText: cardholderError,
                     },
                     {
-                        name: fieldNames.paymentCardNumber,
+                        name: "paymentCardNumber",
                         labelText: "Card Number",
                         value: paymentCardNumber,
                         errorText: cardNumberError,
@@ -76,7 +76,7 @@ class PaymentInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.paymentCardExpiryMonth,
+                        name: "paymentCardExpiryMonth",
                         labelText: "Expiry Month",
                         type: "select",
                         options: numberArray(1, 12),
@@ -84,7 +84,7 @@ class PaymentInfo extends React.Component {
                         errorText: expiryMonthError,
                     },
                     {
-                        name: fieldNames.paymentCardExpiryYear,
+                        name: "paymentCardExpiryYear",
                         labelText: "Expiry Year",
                         type: "select",
                         options: numberArray(2023, 2032),
@@ -97,7 +97,7 @@ class PaymentInfo extends React.Component {
             {
                 fields: [
                     {
-                        name: fieldNames.paymentCardSecurityCode,
+                        name: "paymentCardSecurityCode",
                         labelText: "CVV",
                         type: "number",
                         rowClass: "small-field",

@@ -80,14 +80,44 @@ class BrowsingPage extends React.Component {
         const focusedProductObj = products && products.find(product => product.name === focusedProduct);
         return (
             <div>
-                <Header appStateInfo={appStateInfo} spreadContent={true} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
-                <SearchBar changeSortingFunction={this.changeSortingFunction} changeSearchFunction={this.changeSearchString} />
+                <Header 
+                    appStateInfo={appStateInfo} 
+                    spreadContent={true} 
+                    signOutFunction={signOutFunction} 
+                    navigateAppFunction={navigateAppFunction} 
+                    navigateBrowsingFunction={navigateBrowsingFunction} 
+                />
+                <SearchBar 
+                    changeSortingFunction={this.changeSortingFunction} 
+                    changeSearchFunction={this.changeSearchString} 
+                />
                 <div className="filter-list-container">
-                    <FilterBar productAttributes={productAttributes} productCategories={productCategories} changeFilterFunction={this.changeFilter} />
-                    <ProductList loading={loading} errorMessage={errorMessage} products={products} sortingFunction={sortingFunction} filters={filters} searchString={searchString} changeItemQuantityFunction={changeItemQuantityFunction} focusProductFunction={this.setProductFocus} appStateInfo={appStateInfo} />
+                    <FilterBar 
+                        productAttributes={productAttributes} 
+                        productCategories={productCategories} 
+                        changeFilterFunction={this.changeFilter} 
+                    />
+                    <ProductList 
+                        loading={loading} 
+                        errorMessage={errorMessage} 
+                        products={products} 
+                        sortingFunction={sortingFunction} 
+                        filters={filters} 
+                        searchString={searchString} 
+                        changeItemQuantityFunction={changeItemQuantityFunction} 
+                        focusProductFunction={this.setProductFocus} 
+                        appStateInfo={appStateInfo} 
+                    />
                 </div>
                 <Footer />
-                {focusedProduct && <ProductModal product={focusedProductObj} focusProductFunction={this.setProductFocus} quantityInCart={cart[focusedProductObj.name] ? cart[focusedProductObj.name] : 0} changeItemQuantityFunction={changeItemQuantityFunction} />}
+                {focusedProduct && 
+                    <ProductModal 
+                        product={focusedProductObj} 
+                        focusProductFunction={this.setProductFocus} 
+                        quantityInCart={cart[focusedProductObj.name] ? cart[focusedProductObj.name] : 0} 
+                        changeItemQuantityFunction={changeItemQuantityFunction} 
+                    />
+                }
             </div>
         )
     }

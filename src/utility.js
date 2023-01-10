@@ -21,14 +21,14 @@ export const fileSizeToString = kilobytes => `${kilobytes <= 999 ? kilobytes + "
 
 export const formatCamelCase = str => str.replace(/([A-Z])/, " $1");
 
-export const changeComponentField = (component, event) => {
-    const { name: sender, value } = event.target;
-    const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
-    component.setState(prevState => ({
-        ...prevState,
-        [sender]: valToSet,
-    }));
-}
+// export const changeComponentField = (component, event) => {
+//     const { name: sender, value } = event.target;
+//     const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
+//     component.setState(prevState => ({
+//         ...prevState,
+//         [sender]: valToSet,
+//     }));
+// }
 
 export const blurComponentField = (component, event) => {
     const { name: sender, value } = event.target;

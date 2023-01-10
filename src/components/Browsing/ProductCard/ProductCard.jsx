@@ -7,16 +7,13 @@ class ProductCard extends React.Component {
         const { 
             product: { 
                 name, 
-                description, 
                 price: { formatted_with_symbol: price },
                 image: { url: imgUrl },
-                attributes,
             },
             changeItemQuantityFunction, 
             focusProductFunction,
             quantityInCart,
         } = this.props;
-        // console.log("Quantity of " + name + " is " + quantityInCart);
         return (
             <div className="product-card" style={{backgroundImage: `url(${imgUrl})`}}>
                 <div className="product-card-overlay" onClick={focusProductFunction} data-product-focus-name={name}>
@@ -26,7 +23,11 @@ class ProductCard extends React.Component {
                     </div>
                 </div>
                 <div className="product-card-input-container">
-                    <ProductCartControls name={name} changeItemQuantityFunction={changeItemQuantityFunction} quantityInCart={quantityInCart} />
+                    <ProductCartControls 
+                        name={name} 
+                        changeItemQuantityFunction={changeItemQuantityFunction} 
+                        quantityInCart={quantityInCart} 
+                    />
                 </div>
             </div>
         )

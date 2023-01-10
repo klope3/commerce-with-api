@@ -14,7 +14,12 @@ class MainPage extends React.Component {
         } = this.props;
         return (
             <div className="main-page">
-                <Header appStateInfo={appStateInfo} signOutFunction={signOutFunction} navigateAppFunction={navigateAppFunction} navigateBrowsingFunction={navigateBrowsingFunction} />
+                <Header 
+                    appStateInfo={appStateInfo} 
+                    signOutFunction={signOutFunction} 
+                    navigateAppFunction={navigateAppFunction} 
+                    navigateBrowsingFunction={navigateBrowsingFunction} 
+                />
                 <div className="main-page-center">
                     <div className="main-bg"></div>
                     <div className="container-hero">

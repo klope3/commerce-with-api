@@ -1,8 +1,3 @@
-// export const sortingFunctions = {
-//     alphaAscending: products => [...products].sort((a, b) => a.name > b.name ? 1 : -1),
-//     alphaDescending: products => [...products].sort((a, b) => a.name > b.name ? -1 : 1),
-// }
-
 export const sortingFunctions = [
     {
         name: "Name (A-Z)",

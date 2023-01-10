@@ -14,6 +14,7 @@
 
     --max-content-width: 1024px;
 
+    --size-12: 0.75rem;
     --size-14: 0.875rem;
     --size-16: 1rem;
     --size-20: 1.25rem;
@@ -53,6 +54,7 @@ h1 {
 
 .error-text {
     color: red;
+    font-size: var(--size-12);
 }
 
 .success-text {
