@@ -6,7 +6,9 @@ class StyledToggle extends React.Component {
         return (
             <div>
                 <div className="bold-text">{headingText}</div>
-                <div><input type="checkbox" name={inputId} id={inputId} data-tag={dataTag} onChange={changeFunction} /></div>
+                <div>
+                    <input type="checkbox" name={inputId} id={inputId} data-tag={dataTag} onChange={changeFunction} />
+                </div>
             </div>
         )
     }

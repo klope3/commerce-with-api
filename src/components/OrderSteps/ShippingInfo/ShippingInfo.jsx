@@ -170,7 +170,15 @@ class ShippingInfo extends React.Component {
                         <button name="cart" className="button-major" id="back-to-cart" onClick={navFunction}>
                             <FontAwesomeIcon icon={faArrowLeft} />  Back To Cart
                         </button>
-                        <button name="payment" className="button-major button-big" id="go-to-payment" onClick={() => this.clickGoToPayment(fieldValues)}>Go To Payment  <FontAwesomeIcon icon={faArrowRight} /></button>
+                        <button 
+                            name="payment" 
+                            className="button-major button-big" 
+                            id="go-to-payment" 
+                            onClick={() => this.clickGoToPayment(fieldValues)}
+                        >
+                            Go To Payment  
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </button>
                     </div>
                 </div>
                 <div>

@@ -1,7 +1,6 @@
 import React from "react";
 import BrowsingPage from "../BrowsingPage/BrowsingPage";
 import MainPage from "../MainPage/MainPage";
-import "./BrowsingHub.css";
 
 class BrowsingHub extends React.Component {
     constructor() {

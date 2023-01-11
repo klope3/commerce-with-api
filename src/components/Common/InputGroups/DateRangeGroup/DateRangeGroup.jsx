@@ -24,8 +24,6 @@ class DateRangeGroup extends React.Component {
                             <input type="date" name={item.name} id={item.name} data-tag={dataTag} onChange={changeFunction} />
                         </div>
                     ))}
-                    {/* <input type="date" name={"earliest"} id={"earliest"} data-tag={dataTag} onChange={changeFunction} />
-                    <input type="date" name={"latest"} id={"latest"} data-tag={dataTag} onChange={changeFunction} /> */}
                 </div>
             </div>
         )

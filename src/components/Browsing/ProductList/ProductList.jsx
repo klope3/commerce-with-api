@@ -59,7 +59,7 @@ class ProductList extends React.Component {
         }
 
         return result;
-    } //will need custom implementation based on specific products, attributes, use case
+    }
 
     render() {
         const { 
@@ -74,8 +74,13 @@ class ProductList extends React.Component {
             appStateInfo: { cart },
         } = this.props;
         const searchRegex = new RegExp(`${searchString}`, "i");
-        const searchedProducts = products ? products.filter(product => !searchString || !searchString.length || product.name.match(searchRegex) || product.description.match(searchRegex)) : undefined;
-        const filteredProducts = searchedProducts && filters ? this.filterProducts(searchedProducts, filters, searchString) : undefined;
+        const searchedProducts = products ? 
+            products.filter(product => (
+                !searchString || !searchString.length || 
+                product.name.match(searchRegex) || product.description.match(searchRegex)
+            )) : undefined;
+        const filteredProducts = searchedProducts && filters ? 
+            this.filterProducts(searchedProducts, filters, searchString) : undefined;
         const sortedProducts = filteredProducts ? sortingFunction(filteredProducts) : undefined;
         return (
             <div className="product-list-container">

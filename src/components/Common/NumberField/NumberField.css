@@ -6,13 +6,3 @@
 .number-field {
     display: flex;
 }
-
-/* .number-field input::-webkit-inner-spin-button,
-.number-field input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.number-field input[type=number] {
-    -moz-appearance: textfield;
-} */

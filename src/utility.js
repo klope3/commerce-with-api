@@ -1,5 +1,4 @@
 import { creditCardTypes } from "./constants";
-import { formattingFunctions } from "./formatters";
 import { validationFunctions } from "./validation";
 
 export const getCardType = numberString => {
@@ -20,15 +19,6 @@ export const numberArray = (first, last) => {
 export const fileSizeToString = kilobytes => `${kilobytes <= 999 ? kilobytes + " KB" : (kilobytes / 100).toFixed(2) + " MB"}`;
 
 export const formatCamelCase = str => str.replace(/([A-Z])/, " $1");
-
-// export const changeComponentField = (component, event) => {
-//     const { name: sender, value } = event.target;
-//     const valToSet = formattingFunctions[sender] ? formattingFunctions[sender](value) : value;
-//     component.setState(prevState => ({
-//         ...prevState,
-//         [sender]: valToSet,
-//     }));
-// }
 
 export const blurComponentField = (component, event) => {
     const { name: sender, value } = event.target;

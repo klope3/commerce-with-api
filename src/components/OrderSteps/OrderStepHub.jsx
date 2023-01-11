@@ -68,7 +68,6 @@ class OrderStepHub extends React.Component {
         return (
             <div className="order-hub">
                 <HomePortal navFunction={navigateFunction} buttonName="browsing" id="order-step-home-portal" />
-                {/* <button name="browsing" onClick={navigateFunction}>Back To Home</button> */}
                 {page === "cart" && 
                     <Cart 
                         appStateInfo={appStateInfo} 

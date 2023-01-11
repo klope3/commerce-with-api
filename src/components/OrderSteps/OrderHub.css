@@ -22,7 +22,7 @@
 
 .order-step-input-area {
     min-width: 290px;
-    max-width: 420px;
+    max-width: 490px;
     border-left: 1px solid gray;
     padding-left: var(--padding-gamma);
     position: relative;

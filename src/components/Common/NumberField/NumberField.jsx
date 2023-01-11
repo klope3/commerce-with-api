@@ -6,7 +6,7 @@ class NumberField extends React.Component {
         return (
             <div className="number-field">
                 <button>-</button>
-                <input type="number" name="" id="" />
+                <input type="number" />
                 <button>+</button>
             </div>
         )

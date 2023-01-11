@@ -54,15 +54,29 @@ class ProductModal extends React.Component {
                             <h2>{name}</h2>
                             <div>{description.replace(/(<p>|<\/p>)/g, "")}</div>
                             <div className="product-modal-price-flex">
-                                <ProductCartControls name={name} changeItemQuantityFunction={changeItemQuantityFunction} quantityInCart={quantityInCart} />
+                                <ProductCartControls 
+                                    name={name} 
+                                    changeItemQuantityFunction={changeItemQuantityFunction} 
+                                    quantityInCart={quantityInCart} 
+                                />
                                 <div className="product-modal-price">{price}</div>
                             </div>
                         </div>
                         <div className="product-info-beta">
-                            {info.map(info => <div key={info.heading} className="product-info-block"><div className="product-info-heading">{info.heading}</div><div className={`${info.extraClass} product-info-value`}>{info.value}</div></div>)}
+                            {info.map(info => (
+                                <div key={info.heading} className="product-info-block">
+                                    <div className="product-info-heading">{info.heading}</div>
+                                    <div className={`${info.extraClass} product-info-value`}>{info.value}</div>
+                                </div>))
+                            }
                         </div>
                     </div>
-                    <FontAwesomeIcon icon={faXmark} className="product-modal-x" onClick={focusProductFunction} data-product-focus-name={undefined} />
+                    <FontAwesomeIcon 
+                        icon={faXmark} 
+                        className="product-modal-x" 
+                        onClick={focusProductFunction} 
+                        data-product-focus-name={undefined} 
+                    />
                 </div>
             </div>
         )

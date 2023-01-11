@@ -21,9 +21,15 @@ class Header extends React.Component {
                     <HomePortal navFunction={navigateBrowsingFunction} />
                     <div className="header-button-flex">
                         <button name="order" onClick={navigateAppFunction}>{`Cart (${cartItemCount})`}</button>
-                        {!activeAccount && <button name="account" className="button-major" onClick={navigateAppFunction}>Sign In</button>}
+                        {!activeAccount && 
+                            <button name="account" className="button-major" onClick={navigateAppFunction}>
+                                Sign In
+                            </button>
+                        }
                         {activeAccount && <button onClick={signOutFunction}>Sign Out</button>}
-                        <span className="account-greeting">Welcome, {activeAccount ? activeAccount.firstName : "Guest"}!</span>
+                        <span className="account-greeting">
+                            Welcome, {activeAccount ? activeAccount.firstName : "Guest"}!
+                        </span>
                     </div>
                 </div>
             </header>

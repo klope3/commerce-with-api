@@ -10,7 +10,13 @@ class HomePortal extends React.Component {
             id,
         } = this.props;
         return (
-            <button name={buttonName ? buttonName : "main"} className="home-portal" id={id} onClick={navFunction} style={{pointerEvents: navFunction ? "initial" : "none"}}>
+            <button 
+                name={buttonName ? buttonName : "main"} 
+                className="home-portal" 
+                id={id} 
+                onClick={navFunction} 
+                style={{pointerEvents: navFunction ? "initial" : "none"}}
+            >
                 {brandName}
             </button>
         )

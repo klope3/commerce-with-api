@@ -15,11 +15,13 @@ class SearchBar extends React.Component {
         const { changeSortingFunction, changeSearchFunction } = this.props
         return (
             <div className="search-bar">
-                <SearchField name="search" id="search" changeFunction={this.changeSearchString} buttonFunction={changeSearchFunction} searchString={this.state.searchString} />
-                {/* <div>
-                    <input type="text" name="search" id="search" onChange={this.changeSearchString} />
-                    <button onClick={changeSearchFunction} data-search-string={this.state.searchString}>Search</button>
-                </div> */}
+                <SearchField 
+                    name="search" 
+                    id="search" 
+                    changeFunction={this.changeSearchString} 
+                    buttonFunction={changeSearchFunction} 
+                    searchString={this.state.searchString} 
+                />
                 <SearchSettings changeSortingFunction={changeSortingFunction} />
             </div>
         )

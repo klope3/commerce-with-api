@@ -17,11 +17,31 @@ class CartItemRow extends React.Component {
                     <div className="cart-item-data">
                         <div className="bold-text">{product.name}</div>
                         <div className="minor-text">File Formats:</div> 
-                        <div className="file-formats-flex">{product.attributes.find(attribute => attribute.name === "File Formats").value.map(item => <div key={item.label} className="file-format">{item.label}</div>)}</div>
+                        <div className="file-formats-flex">
+                            {product.attributes
+                                .find(attribute => attribute.name === "File Formats").value
+                                .map(item => (
+                                    <div key={item.label} className="file-format">{item.label}</div>)
+                                )
+                            }
+                        </div>
                     </div>
                     <div className="bold-text">{product.price.formatted_with_symbol}</div>
-                    <div className="cart-item-quantity"><input type="number" name="" id="" value={quantity} min="1" onChange={changeItemQuantityFunction} data-product-name={product.name}/></div>
-                    <button className="button-remove" name="removeFromCartButton" data-product-name={product.name} onClick={changeItemQuantityFunction}>
+                    <div className="cart-item-quantity">
+                        <input 
+                            type="number" 
+                            value={quantity} 
+                            min="1" 
+                            onChange={changeItemQuantityFunction} 
+                            data-product-name={product.name}
+                        />
+                    </div>
+                    <button 
+                        className="button-remove" 
+                        name="removeFromCartButton" 
+                        data-product-name={product.name} 
+                        onClick={changeItemQuantityFunction}
+                    >
                         <FontAwesomeIcon className="min-768" icon={faXmark} />
                         <span className="max-768" style={{pointerEvents: "none"}}>Remove</span>
                     </button>

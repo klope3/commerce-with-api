@@ -13,7 +13,13 @@ class RadioGroup extends React.Component {
             <div className="radio-group" id={id}>
                 {radios.map(radio => (
                     <label key={radio.id} htmlFor={radio.id}>
-                        <input type="radio" name={groupName} id={radio.id} checked={radio.checked} onChange={fieldChangeFunction} />
+                        <input 
+                            type="radio" 
+                            name={groupName} 
+                            id={radio.id} 
+                            checked={radio.checked} 
+                            onChange={fieldChangeFunction} 
+                        />
                         <div className={`radio-group-option-content ${radio.contentContainerClass || ""}`}>
                             {radio.content}
                         </div>
