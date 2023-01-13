@@ -1,3 +1,5 @@
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import HomePortal from "../HomePortal/HomePortal";
 import "./Header.css";
@@ -20,7 +22,11 @@ class Header extends React.Component {
                 <div className={`${spreadContent ? "" : "container-main"} header-flex`}>
                     <HomePortal navFunction={navigateBrowsingFunction} />
                     <div className="header-button-flex">
-                        <button name="order" onClick={navigateAppFunction}>{`Cart (${cartItemCount})`}</button>
+                        <button name="order" onClick={navigateAppFunction}>
+                            {/* {`Cart (${cartItemCount})`} */}
+                            <FontAwesomeIcon icon={faCartShopping} />
+                            {` ${cartItemCount}`}
+                        </button>
                         {!activeAccount && 
                             <button name="account" className="button-major" onClick={navigateAppFunction}>
                                 Sign In

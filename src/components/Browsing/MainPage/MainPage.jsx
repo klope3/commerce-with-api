@@ -1,5 +1,5 @@
 import React from "react";
-import { mainPageGoButtonText, mainPageHookText } from "../../../constants";
+import { mainPageGoButtonText, mainPageHeroImg, mainPageHookText } from "../../../constants";
 import Footer from "../../Common/Footer/Footer";
 import Header from "../../Common/Header/Header";
 import "./MainPage.css";
@@ -21,7 +21,7 @@ class MainPage extends React.Component {
                     navigateBrowsingFunction={navigateBrowsingFunction} 
                 />
                 <div className="main-page-center">
-                    <div className="main-bg"></div>
+                    <div className="main-bg" style={{backgroundImage: `url(${mainPageHeroImg})`}}></div>
                     <div className="container-hero">
                         <h2>{mainPageHookText}</h2>
                         <div>

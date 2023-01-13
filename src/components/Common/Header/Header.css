@@ -26,3 +26,11 @@ h1,
 .header-button-flex button {
     display: block;
 }
+
+.header-button-flex button svg path {
+    color: var(--color-epsilon);
+}
+
+.header-button-flex button:hover svg path {
+    color: var(--color-epsilon-hover);
+}

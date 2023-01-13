@@ -6,6 +6,7 @@ import visaIcon from "../src/assets/images/creditcards/visa.png";
 export const brandName = "Vee3D";
 export const mainPageHookText = "Find premium PBR assets for your project.";
 export const mainPageGoButtonText = "Our Products";
+export const mainPageHeroImg = "https://images.pexels.com/photos/8347501/pexels-photo-8347501.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 export const expressShippingPrice = 5;
 export const standardShippingMinimum = 40;
